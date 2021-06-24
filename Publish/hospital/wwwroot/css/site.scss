@@ -1,0 +1,33 @@
+@import 'sass/heplers/variable';
+@import 'sass/heplers/functions';
+
+@import 'sass/heplers/mixins';
+@import 'sass/pages/layoutPage';
+
+
+@import 'sass/layout/grid';
+@import 'sass/components/buttons';
+@import 'sass/components/inputs';
+@import 'sass/components/pagination';
+@import 'sass/components/coverPage';
+@import 'sass/layout/header';
+@import 'sass/layout/settingBox';
+ @import 'sass/pages/home';
+ @import 'sass/pages/doctors';
+ @import 'sass/pages/doctor-info';
+
+ @import 'sass/pages/hospital';
+
+@import 'sass/pages/bookappointment';
+@import 'sass/pages/commonquestion';
+@import 'sass/pages/departments';
+@import 'sass/pages/department-info';
+@import 'sass/pages/news';
+@import 'sass/pages/news-info';
+
+@import 'sass/pages/contactus';
+@import 'sass/pages/clinics';
+@import 'sass/pages/aboutus';
+@import 'sass/layout/footer';
+ 
+  

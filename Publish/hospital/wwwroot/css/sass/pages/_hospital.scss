@@ -1,0 +1,35 @@
+.hospital{
+    text-transform: capitalize;
+    h2{
+        text-align: center;
+            span{
+                position: relative;
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+             
+            &::before{
+                position: absolute;
+                content: '';
+                bottom: -3px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 50%;
+                height: 3px;
+                background-color: var(--main-color);
+            
+            }
+                }
+ }
+    .description{
+        p{
+   padding: .5rem;
+   font-size: 1.1rem;
+   @include media-breakpoint-down('sm'){
+     text-align: center;
+     font-size: 1.2rem;
+
+  }
+        }
+    }
+    
+}

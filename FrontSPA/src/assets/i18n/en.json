@@ -1,0 +1,67 @@
+{
+    "general": {
+        "create": "create",
+        "home": "home",
+        "patients": "patients",
+        "delete": "delete",
+        "are you sure delete this records": "are you sure delete this records",
+        "save": "save",
+        "name ar":"name ar",
+        "name":"name",
+        "add":"add"
+    },
+    "home": {
+        "home": "home",
+        "patients": "patients",
+        "calender": "calender",
+        "logout": "logout",     
+           "new": "new"
+
+    },
+    "table": {
+        "search": "search",
+        "print Pdf": "print PDF",
+        "print excel": "print ECxel",
+        "show": "show",
+        "entries": "entries",
+        "add": "add",
+        "delete": "delete",
+        "more": "more",
+        "showing": "showing",
+        "to": "to",
+        "of": "from",
+        "no records": "no records"
+    },
+    "patient": {
+        "name": "name",
+        "lab code": "lab code",
+        "degree": "degree",
+        "phone": "phone",
+        "address": "address",
+        "department": "deparment",
+        "first name": "first name",
+        "father name": "father name",
+        "third name": "third name",
+        "last name": "last name",
+        "date of birth": "date of birth",
+        "national id": "national id",
+        "city": "city",
+        "state": "state",
+        "street": "street",
+        "email": "email"
+    },
+    "navs": {
+        "record video": "record video",
+        "doctor": "doctor",
+        "witing list": "witing list",
+        "reports": "reports",
+        "ercp": "ercp",
+        "cononscopy": "cononscopy",
+        "ugi": "ugi",
+        "flexiable": "flexiable"
+    },
+    "footer": {
+        "copyright": "copyright © 2020-2021",
+        "reserved": "all rights reserved"
+    }
+}

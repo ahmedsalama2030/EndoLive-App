@@ -1,0 +1,39 @@
+<div class="form text-center text-capitalize">
+    <a  [routerLink]="[ '/' ]" class="logo" egLang>Cash </a>
+    <h3 egLang>create new an account</h3>
+      <form [formGroup]="signupForm" (ngSubmit)="signup()" >
+
+ 
+        <div class="mb-3">
+            <input formControlName="userName"  type="text" class="form-control" placeholder="user name" [ngClass]="{'is-invalid':signupForm.get('userName')?.errors&&signupForm.get('userName')?.touched,
+              'is-valid':!signupForm.get('userName')?.errors&&signupForm.get('userName')?.touched
+            }">
+           
+            <div class="invalid-feedback" *ngIf="signupForm?.get('userName')?.touched && signupForm.get('userName')?.hasError('required')" egLang>user name is required  </div>
+          
+          </div>
+      <div class="mb-3">
+         <input formControlName="email"  type="email" class="form-control" placeholder="email" [ngClass]="{'is-invalid':signupForm.get('email')?.errors&&signupForm.get('email')?.touched,'is-valid':!signupForm.get('email')?.errors&&signupForm.get('email')?.touched}">
+           
+        <div class="invalid-feedback" *ngIf="signupForm?.get('email')?.touched && signupForm.get('email')?.hasError('required')" egLang>email is required  </div>
+        <div class="invalid-feedback" *ngIf="signupForm?.get('email')?.touched && signupForm.get('email')?.hasError('pattern')" egLang>  email invalid  </div>
+      </div>
+      <div class="mb-3">
+        <input formControlName="password"   type="password" class="form-control" placeholder="password" [ngClass]="{'is-invalid':signupForm.get('password')?.errors&&signupForm.get('password')?.touched,'is-valid':!signupForm.get('password')?.errors&&signupForm.get('password')?.touched}">
+        <div class="invalid-feedback" *ngIf="signupForm?.get('password')?.touched && signupForm.get('password')?.hasError('required')" egLang>password is required  </div>
+        <div class="invalid-feedback" *ngIf="signupForm?.get('password')?.touched && signupForm.get('password')?.hasError('minlength')" egLang>password must has min 4 character  </div>
+         
+      </div>
+      <div class="mb-3">
+        <input formControlName="repassword" type="password" class="form-control" placeholder="re password" [ngClass]="{'is-invalid':signupForm.get('repassword')?.errors&&signupForm.get('repassword')?.touched,'is-valid':!signupForm.get('repassword')?.errors&&signupForm.get('repassword')?.touched}">
+        <div class="invalid-feedback" *ngIf="signupForm?.get('repassword')?.touched && signupForm.get('repassword')?.hasError('required')" egLang>repassword is required  </div>
+        <div class="invalid-feedback" *ngIf="signupForm?.get('repassword')?.touched && signupForm.get('repassword')?.hasError('mustMatch')" egLang>the password and repassword not match </div>
+      </div>
+      <div   class="text-danger my-1" egLang >{{errorMassage}}</div>
+
+      <div class="mb-3 forgot ">
+       <span (click)="gologin()"  egLang>have an account</span>
+        </div>
+      <button [disabled]="!signupForm.valid  " type="submit" class="btn submit" egLang>register</button>
+    </form>
+  </div>

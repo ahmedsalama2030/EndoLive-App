@@ -1,0 +1,107 @@
+﻿ .breadcrumb-item + .breadcrumb-item::before{
+margin:0 .5rem;
+}
+.card-footer, .card-body {
+    position: relative;
+}
+#loader{
+position:absolute;
+right:0;
+top:0;
+font-size:2rem;
+padding:15px
+ 
+}
+.rtl .form-group label {
+    text-align: right;
+    display: block
+}
+.ltr .form-group label {
+    text-align: left;
+    display:block
+}
+.dz-filename, .dz-success-mark, .dz-error-mark {
+    display: none;
+}
+.dz-preview{
+    margin:.5rem ; 
+}
+.fa-cloud-upload-alt {
+    font-size: 5rem;
+    cursor: pointer;
+}
+.dz-error-message{
+    color:#f00;
+}
+.swal2-title  {
+    padding:1.5rem .5rem;
+    text-transform:capitalize;
+
+}
+.send-btn {
+    pointer-events: none;
+    background-color: #303030;
+    border:0
+}
+ 
+.overlay-form {
+    width: 100%;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transition: .2s;
+    transform: translate(-50%, -50%);
+    height: 100%;
+    transition: display .2s ease-in-out;
+}
+/*images upload*/
+#galleryUpload{
+    display:flex;
+    justify-content:center;
+    align-content:center;
+    margin-top:1rem;
+    flex-wrap:wrap;
+ }
+    #galleryUpload .image-box {
+        display:flex;
+        flex-flow:column;
+        justify-content:center;
+        align-items:center;
+    }
+    #galleryUpload img, #sitelogo img, #sitelogo img {
+        width: 150px;
+        height: 150px;
+        margin: .5rem;
+    }
+#sitelogocontainer img, #managerPhotocontainer img {
+    width: 100px;
+    height: 100px;
+}
+
+.modal-dialog .overlay {
+    background-color: rgba(0, 0, 0, 0) !important;
+   
+}
+
+#mainTable tbody tr:not(.child) td:not(.dataTables_empty):last-of-type {
+    display: none;
+}
+ 
+#mainTable tbody tr.child li:last-of-type {
+    display: none;
+}
+
+/*// user check role
+*/ 
+.rtl .user-check-role{
+    text-align:right;
+}
+.ltr .user-check-role {
+    text-align: left;
+}
+
+/*// form error*/
+.field-validation-error {
+    display: block;
+    text-align: center;
+}

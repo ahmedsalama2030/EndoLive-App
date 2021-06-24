@@ -1,0 +1,39 @@
+.container-error{
+   position: absolute;
+    @include HeroImage;
+    text-align: center;
+    text-transform: capitalize;
+    h2{
+        color: #f00;
+        font-size: 5rem;
+         @include media-breakpoint-down('sm'){
+            font-size: 2rem;
+       }
+        
+    }
+    p{
+        margin: 3rem 0;
+        font-size: 1.6rem;
+        color:$black-500;
+        @include media-breakpoint-down('sm'){
+            font-size: 1.2rem;
+        }
+    }
+    a{
+        display: inline-block;
+         font-size: 1.5rem;
+        color:#fff;
+        @include prifixerAll(border-radius,5px);
+        padding: .5em 1em;
+        text-align: center;
+        background: linear-gradient(to left, var(--main-color) 50%, $black-600 50%) right;
+        background-size: 210%;
+     transition:background-position .5s ease-out;
+        &:hover{
+            background-position: left;
+
+        }
+        
+    }
+}
+ 

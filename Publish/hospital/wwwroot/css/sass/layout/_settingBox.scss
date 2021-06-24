@@ -1,0 +1,80 @@
+.setting-box{
+    text-transform: capitalize;
+    position: fixed;
+    top:0;
+    left:-200px;
+    width: 200px;
+    height: 100vh;
+    background-color: #fff;
+    z-index: $z-index-setting-box;
+     @include prifixerAll( box-shadow, 4px 4px 10px rgba(#000,.2));
+    @include prifixerAll( transition, left .5s ease-in-out);
+
+     .head{
+        text-align: center;
+        background-color: var(--main-color);
+        padding: 1rem;
+        color: #fff;
+    }
+   
+.setting{
+    background-color: $black-100;
+    margin: 1rem 0;
+    text-align: center;
+    padding:1rem 0;
+
+    h3{
+        font-size: 1.2rem;
+    }
+    span{
+        display: inline-block;
+        margin: 1rem 0;
+        &.active{
+            background-color: $black-600;
+        }
+    }
+    
+    
+}
+.color{
+        span{
+            display: inline-block;
+            background-color: #000;
+            padding: .7rem;
+            border:2px solid #fff;
+             @include prifixerAll( border-radius, 50%);
+             cursor: pointer;
+             &.active{
+                border:2px solid $balck-700;
+            }
+
+        }
+}
+   
+.lang{
+    button.active{
+        background-color: $black-600;
+    }
+}
+
+   label{
+    position: absolute;
+    top:40%;
+    right:-3rem;
+    padding: 1rem;
+    cursor: pointer;
+    background-color: #fff;
+    z-index: $z-index-setting-box;
+    color: var(--main-color);
+     @include prifixerAll( box-shadow, 4px 4px 10px rgba(#000,.2));
+
+     
+   }
+
+}
+#setting-nav{
+    display: none;
+  }
+#setting-nav:checked + .setting-box {
+    left: 0;
+}

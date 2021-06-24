@@ -1,0 +1,68 @@
+{
+    "general":{
+        "create":"تسجيل",
+        "home":"الرئيسية",
+        "patients":"المرضى",
+        "delete":"حذف",
+        "are you sure delete this records":"هل انت منأكد من الحذف",
+        "save":"حفظ",
+        "name ar":"الاسم بالعربى",
+        "name":"الأسم",
+        "add":"أضافة" 
+
+     },
+    "home": {
+        "home": "الرئيسية",
+        "patients": "المرضى",
+        "new": "جديد",
+        "calender": "المدونة",
+        "logout": "تسجيل الخروج"
+    },
+    "table": {
+        "search": "بحث",
+        "print Pdf": "طباعة PDF",
+        "print excel": "طباعة EXCEL",
+        "show": "إظهار",
+        "entries": "السجلات",
+        "add": "أضافة",
+        "delete": "حذف",
+        "more": "المزيد",
+        "showing": "أظهار",
+        "to": "إلى",
+        "of": "من",
+        "no records": "لا يوجد سجلات"
+
+    },
+    "patient": {
+        "name": "الأسم",
+        "lab code": "رقم الحاسب",
+        "degree": "الدرجة",
+        "phone": "التليفون",
+        "address": "العنوان",
+        "department": "القسم",
+        "first name": "الأسم الأول",
+        "father name": "أسم الأب",
+        "third name": "الأسم الثالث",
+        "last name": " الأسم الرابع",
+        "date of birth": "تأريخ الميلاد",
+         "national id": "الرقم القومى",
+         "city": "المدينة",
+         "state": "المحافظه",
+        "street": "الشارع",
+        "email": "الإيميل"
+    },
+    "navs": {
+        "record video": "تسجيل فيديو ",
+        "doctor": "الأطباء",
+        "witing list": "قوأئم الأنتظار",
+        "reports": "التقارير",
+        "ercp": "منظار ال ercp ",
+        "cononscopy": "cononscopy منظار",
+        "ugi": "ugi منظار",
+        "flexiable": "flexiable منظار"
+    },
+    "footer": {
+        "copyright": "لنسخة © 2020-2021",
+        "reserved": "كل الحقوق محفوظة"
+    }
+}

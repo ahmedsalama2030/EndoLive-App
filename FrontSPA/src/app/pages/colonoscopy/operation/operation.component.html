@@ -1,0 +1,165 @@
+<!-- Content Header (Page header) -->
+<div class="content-header text-capitalize">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark" translate>general.create</h1>
+
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a [routerLink]="['']" routerLinkActive="router-link-active"
+                            translate>general.home</a></li>
+                    <li class="breadcrumb-item"><a [routerLink]="['/patients']" routerLinkActive="router-link-active"
+                            translate>general.patients</a></li>
+                    <li class="breadcrumb-item active" translate>general.create</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+
+<section>
+    <div class="px-5 mb-5 text-capitalize">
+        <form [formGroup]="formReport">
+            <div class="base row">
+                <div class="report col-12 col-md-7">
+                    <base-report [patient]=patient  >
+                        <ng-container #body>
+                            <report-info 
+                             [scope]=scope 
+                             [anaesth]=anaesth 
+                             [ptout]=outPatient
+                             [endoscopist]=selectedendoscopist
+                              ></report-info>
+
+                            <div class="body-parameter px-3 py-2">
+                                <div class="row"> 
+                                    <div class="col-12 col-lg-8">
+                                        <div class="parameter">
+                                            <h3>indication</h3>
+                                            <div [innerHTML]="indication?.value | SafeHtml"></div>
+                                        </div>
+                                        <div class="parameter">
+                                            <h3>colonoscopy</h3>
+                                            <div [innerHTML]="colonoscopy?.value | SafeHtml"></div>
+
+                                        </div>
+                                        <div class="parameter">
+                                            <h3>conclusion</h3>
+                                            <p [innerHTML]="conclusion?.value | SafeHtml"></p>
+
+                                        </div>
+                                        <div class="parameter">
+                                            <h3>consolutant</h3>
+                                            <p [innerHTML]="selectedconsolutant?.reportDescription | SafeHtml"></p>
+                                            
+                                         </div>
+                                    </div>
+                                    <div class="col-12 col-lg-4">
+                                        <div class="report-img">
+                                            <img class="img-fluid mt-2" src="assets/img/status.png" alt="">
+                                        </div>
+                                        <div class="report-img mt-2">
+                                            <img class="img-fluid" src="assets/img/status.png" alt="">
+                                        </div>
+                                        <div class="report-img mt-2">
+                                            <img class="img-fluid" src="assets/img/status.png" alt="">
+                                        </div>
+                                        <div class="report-img mt-2">
+                                            <img class="img-fluid" src="assets/img/status.png" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+                        </ng-container>
+
+                    </base-report>
+                </div>
+
+                <div id="report-operation" class="operateion col-12 col-md-5">
+                    <report-paramenter-operation  
+                    [consolutant]=consolutant
+                    [endoscopist]=endoscopist 
+                    (onconsolutant)=onconsolutant($event) 
+                    (onendoscopist)=onendoscopist($event)
+
+                    >
+                        <ng-container class="parameter" #parameter>
+                            <div class="mt-3" id="report-info">
+                                <table class="w-90 mx-auto table-responsive-sm text-center table table-bordered  table-sm">
+                                    <thead class="  ">
+                                        <tr>
+                                            <th scope="col">scope</th>
+                                            <th scope="col">anaesth</th>
+                                             <th scope="col">pt-out-in</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td scope="row">
+                                                <div class="form-group mb-0">
+                                                    <input [(ngModel)]="scope" formControlName="scope" name="scope" class="form-control  form-control-sm mx-auto" type="text" />
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group mb-0">
+                                                    <input class=" mx-auto form-control-sm form-control " [(ngModel)]="anaesth" formControlName="anaesth"     type="text" />
+                                                </div> 
+                                            </td> 
+                                           
+                                            <td>
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                                                       <input type="checkbox" [(ngModel)]="outPatient" formControlName="outPatient"     class=" custom-control-input mx-5" id="customSwitch3">
+                                                      <label class="custom-control-label" for="customSwitch3">pt-out</label>
+                                                    </div>
+                                                  </div>
+                                                   
+
+                                            </td>
+
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="form-group mt-3">
+                                <h3 for="indication"> indication</h3>
+                                <ngx-editor-menu  [hidden]='false' [editor]="editor"> </ngx-editor-menu>
+                                <ngx-editor [editor]="editor" formControlName="indication"></ngx-editor>
+                            
+                            </div>
+                            <div class="form-group">
+                                <h3 for="colonoscopy"> colonoscopy</h3>
+                                <ngx-editor-menu [hidden]='false' [editor]="editor2"> </ngx-editor-menu>
+                                <ngx-editor [editor]="editor2" formControlName="colonoscopy"></ngx-editor>
+                            </div>
+                             <div class="form-group">
+                                <h3 for="colonoscopy"> conclusion</h3>
+                                <ngx-editor-menu [hidden]='false' [editor]="editor3"> </ngx-editor-menu>
+                                <ngx-editor [editor]="editor3" formControlName="conclusion"></ngx-editor>
+                            </div>
+                        </ng-container>
+ 
+                     <ng-container class="patientimage">
+                        <photo-report
+                        [patientimage]=patientImageGet
+                        ></photo-report> 
+                     </ng-container>
+                     
+                         
+                           
+                    </report-paramenter-operation>
+
+                    
+                </div>
+
+            </div>
+        </form>
+    </div>
+</section>

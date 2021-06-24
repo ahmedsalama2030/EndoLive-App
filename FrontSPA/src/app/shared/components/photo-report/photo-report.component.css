@@ -1,0 +1,39 @@
+.card-body img{
+width: 100px ;
+height: 100px;
+
+}
+.images{
+    flex-wrap: wrap;
+    justify-content: space-around;
+ }
+.images div{
+    margin-bottom: 1rem;
+    position: relative;
+}
+.images div.selected{
+position: absolute;
+background-color:rgba(0, 0, 0, .4);
+top:0;
+bottom: 0;
+width: 100%;
+height: 100%;
+display: none;
+ visibility: hidden;
+opacity: 0;
+transition: all .5s ease-in-out;
+}
+.images div.selected input{
+position: absolute;
+top:50%;
+left: 50%;
+transform: translate(-50%,-50%);
+width: 20px;
+height: 20px;
+}
+.images img:hover +.selected{
+    display: block;
+     visibility: visible;
+    opacity: 1;
+}
+  

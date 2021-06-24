@@ -1,0 +1,94 @@
+.base-report .base-container{
+    background-color: #fff;
+    width: 100%;
+    display: grid;
+    grid-template-areas: "head head head" "body body body" "footer footer footer";
+    box-shadow: 0 9px 23px 3px rgb(64 60 67 / 16%) ,0 -9px 23px 3px rgb(64 60 67 / 16%);
+    
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 90vh;
+    border-radius: 1rem;
+}
+.base-report .header{
+     height: 90px;
+    grid-area: head;
+    display: grid;
+    grid-template-columns:   repeat(3,1fr);
+    padding: .5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #000;
+    border-bottom: 1px solid #000;
+ }
+ 
+.base-report .body{
+    grid-area: body;
+
+}
+.base-report .footer{
+    grid-area: footer;
+
+}
+ .report-name{
+text-align: center;
+text-transform: capitalize;
+font-weight: bold;
+margin: .2rem 0 0 0;
+font-size: 18px;
+color:var(--red)
+}
+.patient-info table tr td:nth-of-type(2){
+ text-align: center; 
+font-size: 18px;    
+}
+.patient-info table tr td:nth-of-type(1)
+{
+    font-weight: bold;
+    text-transform: capitalize;
+}
+ 
+.footer{
+    border-top: 1px solid #000;
+}
+ 
+
+@media (max-width: 575.98px) {
+    .patient-info {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .base-report .header{
+        font-size: .6rem;
+    }
+}
+
+/* // Small devices (landscape phones, less than 768px) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .base-report .header{
+        font-size: .7rem;
+    }
+} 
+
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .patient-info {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .base-report .header{
+        font-size: .8rem;
+    }
+}
+
+/* // Large devices (desktops, less than 1200px) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .base-report .header{
+        font-size: 1rem;
+    }
+ 
+}
+
+@media (min-width: 1200px) {
+     
+
+     
+}

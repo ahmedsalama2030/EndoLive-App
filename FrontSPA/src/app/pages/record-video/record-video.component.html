@@ -1,0 +1,112 @@
+<!-- Content Header (Page header) -->
+<div class="content-header"  >
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Dashboard v2</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Dashboard v2</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+<section class="content hg"    >
+    <div class="container-fluid">
+        <!-- Info boxes -->
+        <div class="row " style="height: 100%;">
+            <div class="col-12 col-md-12 col-lg-8  ">
+                <div class="card video-card">
+                    <div class="card-header">
+                        <div class="row justify-content-between">
+
+                            <div class="col-12 col-md-5">
+                                <div class="row">
+                                    <div class="col">
+                                         <div class="text-bold text-capitalize"> patient name </div>
+                                        <div class="text-bold text-capitalize"> Patient Age </div>
+                                    </div>
+                                    <div class="col">
+                                        <div> ahmed salama ali</div>
+                                        <div> 3 y 5 m</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-12 col-md-5">
+                                <div class="row  ">
+                                    <div class="col">
+                                        <div class="text-bold text-capitalize"> Patient codelab </div>
+                                        <div class="text-bold text-capitalize"> Patient degree </div>
+                                    </div>
+                                    <div class="col">
+                                        <div> 764679</div>
+                                        <div> مدنى تعاقد</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- /.card-header -->
+                    <div class="card-body p-0 ">
+
+                        <video    id="video_{{idx}}" class="video-js vjs-theme-fantasy" playsinline></video>
+
+                        <!-- /.users-list -->
+                    </div>
+                    <!-- /.card-body -->
+
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-4   "  >
+               <div class="card">
+                   <div class="card-header"  >
+                    <div class="text-bold text-capitalize">Video Setting</div>
+                  </div>
+                  <div class="card-body "  >
+                    <div class="form-group">
+                         <div class="form-group">
+                            <label for="exampleInputPassword1">File Path</label>
+                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Path">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                        <label>Chose Device Input</label>
+                        <select class="form-control" >
+                                 <option *ngFor="let device of devicesVideo" value="{{device.deviceId}}">{{device.label}}</option>
+                        </select>
+                      </div>
+                  </div>
+                  <div class="card-footer"  >
+                    <button type="submit" class="btn btn-primary">save</button>
+                    <button type="submit" (click)="takePicture()" class="btn btn-primary">click</button>
+                    <button type="submit" (click)="xx()" class="btn btn-primary">download</button>
+                  </div>
+ 
+
+               </div>
+            </div>
+        </div>
+        <div class="row images-capture  mb-5 px-2  " id="image-content">
+            <div class="card card-image-capture">
+                <div class="card-header">
+                    <div class="text-bold text-capitalize">image capture </div>
+
+                </div>
+                <div class="body py-2">
+                    <div class="container-img-capture" >
+                        <div   *ngFor="let item of images"><img  [src]=item /> </div>
+                          
+                    </div>
+                 </div>
+            </div>
+
+            
+        </div>
+    </div>
+</section>

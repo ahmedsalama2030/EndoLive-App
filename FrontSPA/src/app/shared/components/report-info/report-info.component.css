@@ -1,0 +1,6 @@
+table thead{
+    background-color: var(--light);
+}
+
+tbody td{
+min-height: 2rem; }

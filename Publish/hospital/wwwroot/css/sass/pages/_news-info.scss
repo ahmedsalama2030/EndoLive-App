@@ -1,0 +1,42 @@
+.news-info{
+     i{
+         color: var(--main-color);
+         display: inline-block;
+         font-size: 1.5rem;
+
+    }
+    h2{
+        font-size: 1.3rem;
+        margin-bottom: 3rem;
+        &:hover{
+            color:var(--main-color)
+        }
+        display: inline;
+
+    }
+    p{
+        line-height: 2;
+        padding: 0 2rem;
+        margin-bottom: 2rem;
+    }
+    .our-gallery{
+         display: grid;
+         grid-template-columns: repeat(3,1fr);
+         gap: 20px;
+         @include media-breakpoint-down('md'){
+            grid-template-columns: repeat(2,1fr);
+
+         }
+         @include media-breakpoint-down('sm'){
+            grid-template-columns: repeat(1,1fr);
+
+         }
+         img{
+             width: 100%;
+            
+         }
+        
+
+    }
+     
+}

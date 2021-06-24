@@ -1,0 +1,11 @@
+.form-create{
+    display: grid;
+    grid-gap:10px 30px;
+ }
+ .card-header button{
+margin:0  .2rem;
+ }
+  .header-operation{
+      display: grid;
+  } 
+ 

@@ -1,0 +1,40 @@
+<div class="form text-center text-capitalize">
+    <a  [routerLink]="[ '/' ]" class="logo" egLang>Cash </a>
+    <h3 egLang>Sign In into your account</h3>
+    <form  (ngSubmit)="Onlogin()" #login="ngForm">
+ 
+      <div class="mb-3">
+        <input name="userName" #userName="ngModel" [(ngModel)]="loginform.userName"  type="text" class="form-control  " placeholder={{userNamePlace}}  required />
+        
+        <div *ngIf="userName.invalid && userName.touched" class="text-danger" egLang>
+          user Name is required
+        </div>
+      </div>
+      <div class="mb-3">
+        <input name="password" #password="ngModel" [(ngModel)]="loginform.password"  type="password" class="form-control" placeholder={{passwordPlace}} required  /> 
+
+        <div *ngIf="password.invalid && password.touched" class="text-danger" egLang >
+          password is required
+        </div>
+         </div>
+         <div   class="text-danger" egLang >{{errorMassage}}</div>
+      
+      <div class="mb-1 forgot ">
+       <a href="#"  egLang>forget password</a>
+        </div>
+        <div class="mb-3 forgot ">
+            <span class="d-block d-lg-none" (click)="goRegiser()" >create new account</span>
+             </div>
+      <button [disabled]="!login.valid ||loader" type="submit" class="btn submit">
+        <span [hidden]="loader" class="px-2">
+          <span egLang class="text-capitalize" egLang>login</span>
+      </span>
+
+        <span egLang [hidden]="!loader" >
+          <span egLang>wait</span> 
+          <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+        </span>
+
+      </button>
+    </form>
+  </div>

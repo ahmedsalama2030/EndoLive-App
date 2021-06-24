@@ -1,0 +1,36 @@
+.cover-page{
+    padding:7rem;
+    background-image:url(../img/doctorCover.jpg);
+     background-repeat:no-repeat;
+     background-position:right top;
+     position: relative;
+ .overlay{
+@include overlay;
+ }
+    
+ .links{
+    text-transform:capitalize;
+    display:flex;
+    justify-content:space-between;
+    color:#fff;
+    position:relative;
+    z-index: $z-index-top-overlay ;
+    @include media-breakpoint-down('md'){
+        flex-direction: column;
+        text-align: center;
+
+    }
+    span{
+        display:inline-block;
+       font-size:1.5rem;
+       font-weight:600;
+       margin:0 .5rem
+
+    }
+    a{
+        color:var(--main-color);
+         font-size:1.5rem;
+       font-weight:600;
+    }
+}
+}

@@ -1,0 +1,68 @@
+.doctor-details{
+    .content{
+        display: grid;
+        grid-template-columns: 30% 70% 30%;
+        grid-gap: 20px;
+         @include media-breakpoint-down('sm'){
+            grid-template-columns: 1fr;
+            grid-gap: 5px;
+        }
+      }
+      .info{
+           .box{
+              text-transform: capitalize;
+              padding: 2rem 0;
+              img{
+                  max-height: 250px;
+                  max-width: 250px;
+                   @include prifixerAll( border-radius, 20px 0   20px 0);
+                   padding: 10px;
+                   border:2px solid var(--main-color)
+              }
+              h2{
+                margin: 1rem 0 2rem 0 ;
+                font-weight: 900;
+                  span{
+                     color: var(--main-color);
+                     
+                  }
+              }
+              h3 span{
+                  margin: 0 .5rem;
+              }
+              i{
+                color: var(--main-color);
+             }
+             p{
+                 margin: 1rem 2rem ;
+             }
+
+          }
+      }
+
+      .more{
+          padding: 0 2rem;
+          text-transform: capitalize;
+
+           .content-more{
+              margin-bottom: 5rem;
+          }
+          h2{
+            margin-bottom: 1rem;
+            color: var(--main-color);
+            font-size: 2rem;
+  
+          }
+          p{
+             line-height: 3rem;
+             font-size: 1.2rem;
+              i{
+                 color: var(--main-color);
+             }
+          }
+
+      }
+
+       
+     
+}

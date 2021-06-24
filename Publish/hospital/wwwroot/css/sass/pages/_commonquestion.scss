@@ -1,0 +1,53 @@
+.questions{
+     .question-content{
+        width: 70%;
+        margin: auto;
+    }
+    #qestion-check{
+        display: block;
+    }
+    
+    .card{
+        border:2px solid $black-100;
+        margin-bottom: 1rem;
+ 
+
+        .header{
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem;
+            border-bottom:1px solid $black-100;
+           i{
+               color: var(--main-color);
+               cursor: pointer;
+           }
+ 
+        }
+        .body{
+            height:auto;
+            display: none;
+            padding:2rem;
+             
+ 
+                p{
+                 line-height: 2rem;
+            }
+            .imge{
+                display: flex;
+                flex-wrap: wrap;
+
+            }
+            img{
+                max-height: 200px;
+                max-width: 200px;
+                margin: 0 1rem;
+            }
+       
+       
+       
+       
+        }
+        
+    }
+}
+ 

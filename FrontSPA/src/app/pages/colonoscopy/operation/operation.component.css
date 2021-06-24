@@ -1,0 +1,68 @@
+.base {}
+
+.report-info table {
+    width: 90%;
+    margin: auto;
+    text-align: center;
+}
+
+.report-info table thead {
+    background-color: var(--light);
+}
+
+.body-parameter .parameter h3 {
+    font-weight: bold;
+    text-transform: capitalize;
+    position: relative;
+    color: #000;
+}
+
+.body-parameter div.parameter:not(:last-of-type) h3:before {
+    content: '';
+    position: absolute;
+    width: 10%;
+    height: 4px;
+    background-color: var(--gray);
+    top: 100%;
+    left: 0;
+}
+
+
+
+.body-parameter div.parameter:last-of-type {
+    text-align: center;
+}
+
+.body-parameter .parameter p {
+    color: #000;
+}
+.body-parameter .parameter div{
+    min-height: 10rem;
+
+}
+.fr-second-toolbar {
+    display: none !important;
+}
+
+#report-operation .form-group h3 {
+    position: relative;
+    margin: 1rem 0;
+}
+
+#report-operation .form-group h3:before {
+    content: '';
+    position: absolute;
+    width: 10%;
+    height: 4px;
+    background-color: var(--gray);
+    top: 100%;
+    left: 0;
+}
+ #report-info input{
+max-width:80%;
+ border-color:var(--gray);
+ }
+#report-info .table thead{
+    background-color: var(--light);
+} 
+ 

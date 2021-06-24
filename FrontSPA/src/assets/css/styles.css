@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+ 
+ 
+ @import url("~admin-lte/plugins/fontawesome-free/css/all.css"); 
+ @import url("~admin-lte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css"); 
+ @import url( "~admin-lte/plugins/icheck-bootstrap/icheck-bootstrap.min.css"); 
+ @import url( "~admin-lte/dist/css/adminlte.min.css"); 
+ @import url( "~admin-lte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css"); 
+ @import url( "~admin-lte/plugins/daterangepicker/daterangepicker.css"); 
+  @import url("~ngx-bootstrap/datepicker/bs-datepicker.css"); 
+  @import url("~froala-editor/css/froala_style.min.css");  
+  
+ @import '~video.js/dist/video-js.css'; 
+ @import '~videojs-record/dist/css/videojs.record.css';
+ @import  url('~video.js/dist/video-js.css');
+ @import url('../../../node_modules/ngx-toastr/toastr.css');
+  @import url('./media.css'); 
+  @import url('./site.css');

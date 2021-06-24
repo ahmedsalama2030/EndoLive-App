@@ -1,0 +1,274 @@
+<!-- Content Header (Page header) -->
+<div class="content-header text-capitalize">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark" translate>general.create</h1>
+
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a [routerLink]="['']" routerLinkActive="router-link-active"
+                            translate>general.home</a></li>
+                    <li class="breadcrumb-item"><a [routerLink]="['/doctors']" routerLinkActive="router-link-active"
+                            translate>general.doctors</a></li>
+                    <li class="breadcrumb-item active" translate>general.create</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+ <section class="content text-capitalize">
+    <div class="container">
+     <div class="card ">
+            <div class="card-body py-0">
+                <div class="card-img-overlay" *ngIf="checkStatus"> </div> <!-- overlay card -->
+                <div class="card-header header-operation mb-2">
+                    <div>
+                        <button [disabled]='!form.valid' (click)="onAdd()" type="button" class="btn btn-success">
+                            <i class="fas fa-plus"></i>
+                        </button> 
+                        <button [disabled]='!form.valid'  (click)="onDelete()" type="button" class="btn btn-danger">
+                            <i class="fas fa-trash"></i>
+
+                        </button>
+                        <button  [disabled]='!form.valid' (click)="onEdit()" type="button" class="btn btn-info">
+                            <i class="fas fa-edit"></i>
+                      </button>
+                        <button [disabled]='!form.valid' (click)="onPrint()" type="button" class="btn btn-primary">
+                            <i class="fas fa-print"></i>
+
+                        </button>
+ 
+                    </div>
+                    </div>
+                <form [formGroup]="form"><!-- satrt form -->
+                    <div class="form-create">
+                        <div class="important-filed">
+                            <div class="form-group row">
+                              <label class="col-sm-4 col-form-label" translate>patient.first name</label>
+                                <div class="col-sm-8">
+                                    <input formControlName="firstName" name="firstName" InputTirmFilter type="text"
+                                        class="form-control">
+                                    <div *ngIf="firstName?.touched && firstName?.invalid">
+                                        <div *ngIf="firstName?.hasError('required')" class="text-danger" translate>first
+                                            name required</div>
+                                   </div>
+                                </div>
+                              </div>
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label" translate>patient.father name</label>
+                                <div class="col-sm-8">
+                                    <input formControlName="secondName" name="father" InputTirmFilter type="text"
+                                        class="form-control">
+                                    <div *ngIf="secondName?.touched && secondName?.invalid">
+                                        <div *ngIf="secondName?.hasError('required')" class="text-danger" translate>
+                                            father name required</div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label" translate>patient.third name</label>
+                                <div class="col-sm-8">
+                                    <input formControlName="thirdName" name="thirdName" InputTirmFilter type="text"
+                                        class="form-control">
+                                    <div *ngIf="thirdName?.touched && thirdName?.invalid">
+                                        <div *ngIf="thirdName?.hasError('required')" class="text-danger" translate>third
+                                            name required</div>
+
+                                    </div>
+                                </div>
+                            </div>
+                          
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label" translate>patient.last name</label>
+                                <div class="col-sm-8">
+                                    <input formControlName="lastName" name="lastName" InputTirmFilter type="text"
+                                        class="form-control">
+                                    <div *ngIf="lastName?.touched && lastName?.invalid">
+                                        <div *ngIf="lastName?.hasError('required')" class="text-danger" translate>last
+                                            name required</div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row important-filed">
+                                <label class="col-sm-4 col-form-label" translate>patient.department</label>
+                               <div class="col-sm-8">
+                                    <div class="input-group input-group">
+                                        <select formControlName="departmentId" name="departmentId" id="inputState"
+                                            class="form-control">
+                                            <option *ngFor="let item of departments" value="{{item.id}}"> {{item.name}}
+                                            </option>
+                                        </select> <span class="input-group-append">
+                                            <button (click)="onDepartment(template)" type="button"
+                                                class="btn btn-info btn-flat"><i class="fas fa-plus"></i></button>
+                                        </span>
+                                    </div>
+                                   
+                                     <div *ngIf="departmentId?.touched && departmentId?.invalid">
+                                        <div *ngIf="departmentId?.hasError('required')" class="text-danger" translate>
+                                            departmentId required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                           
+                            <div class="form-group row important-filed">
+                                <label class="col-sm-4 col-form-label" translate>patient.report description </label>
+                                <div class="col-sm-8">
+                                    <ngx-editor-menu [hidden]='false' [editor]="editor"> </ngx-editor-menu>
+                                    <ngx-editor [editor]="editor" formControlName="reportDescription"></ngx-editor>
+                                
+                                     <div *ngIf="reportDescription?.touched && reportDescription?.invalid">
+                                        <div *ngIf="reportDescription?.hasError('required')" class="text-danger" translate> 
+                                             report Description required</div>
+
+                                    </div> 
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <div>
+                           
+                             
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label" translate>doctor.is consultant</label>
+                                <div class="col-sm-8">
+                                    <input formControlName="isConsultant" name="isConsultant" InputTirmFilter type="checkbox"
+                                        class="form-control">
+                                    <div *ngIf="isConsultant?.touched && isConsultant?.invalid">
+                                        <div *ngIf="isConsultant?.hasError('required')" class="text-danger" translate>type
+                                            consultant required</div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row important-filed">
+                                <label class="col-sm-4 col-form-label" translate>docto.show report</label>
+                                <div class="col-sm-8">
+                                    <input formControlName="isShowReportMenu" name="isShowReportMenu" InputTirmFilter type="checkbox"
+                                        class="form-control">
+                                    <div *ngIf="isShowReportMenu?.touched && isShowReportMenu?.invalid">
+                                        <div *ngIf="isShowReportMenu?.hasError('required')" class="text-danger" translate> is 
+                                            show report required</div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row  ">
+                                <label class="col-sm-4 col-form-label" translate>doctor.university name</label>
+                                <div class="col-sm-8">
+                                    <input formControlName="university" name="university" InputTirmFilter type="text"
+                                        class="form-control">
+                                    <div *ngIf="university?.touched && university?.invalid">
+                                        <div *ngIf="university?.hasError('required')" class="text-danger" translate>university
+                                              required</div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label" translate>patient.date of birth</label>
+                                <div class="col-sm-8">
+                                    <input formControlName="dateOfBirth" name="dateOfBirth" InputTirmFilter type="text"
+                                        class="form-control" bsDatepicker [bsConfig]="bsConfig" [maxDate]="maxDate">
+                                    <div *ngIf="dateOfBirth?.touched && dateOfBirth?.invalid">
+                                        <div *ngIf="dateOfBirth?.hasError('required')" class="text-danger" translate>
+                                            date of birth required</div>
+                                     </div>
+                                  </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label" translate>patient.national id</label>
+                                <div class="col-sm-8">
+                                    <input formControlName="nationalId" name="nationalId" InputTirmFilter type="text"
+                                        class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+
+                                <label class="col-sm-4 col-form-label" translate>patient.state</label>
+                                <div class="col-sm-8">
+                                    <input formControlName="state" name="state" InputTirmFilter type="text"
+                                        class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label" translate>patient.city</label>
+                                <div class="col-sm-8">
+                                    <input formControlName="city" name="city" InputTirmFilter type="text"
+                                        class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label" translate>patient.street</label>
+                                <div class="col-sm-8">
+                                    <input formControlName="street" name="street" InputTirmFilter type="text"
+                                        class="form-control">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label" translate>patient.phone</label>
+                                <div class="col-sm-8">
+                                    <input formControlName="phone" name="phone" InputTirmFilter type="text"
+                                        class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label" translate>patient.email</label>
+                                <div class="col-sm-8">
+                                    <input formControlName="email" name="email" InputTirmFilter type="email"
+                                        class="form-control" />
+
+                                    <div *ngIf="email?.touched && email?.invalid">
+                                        <div *ngIf="email?.hasError('email')" class="text-danger" translate>email
+                                            required</div>
+                                        </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- model degree department -->
+<ng-template #template>
+    <div class="modal-header text-capitalize">
+        <h4 class="modal-title pull-left" translate>add department</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body text-capitalize">
+        <form #formDD="ngForm"></form>
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label" translate>name</label>
+            <div class="col-sm-8">
+                <input name="name" [(ngModel)]="DepartModelForm.name" type="text" class="form-control" required>
+            </div>
+
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label" translate translate>general.name ar</label>
+            <div class="col-sm-8">
+                <input name="nameAr" [(ngModel)]="DepartModelForm.nameAr" type="text" class="form-control"
+                    required>
+
+
+            </div>
+
+        </div>
+    </div>
+    <div class="modal-footer text-capitalize">
+        <button class="btn btn-primary btn-md" (click)="saveDepartment()" translate>general.save</button>
+    </div>
+</ng-template>

@@ -1,0 +1,39 @@
+<div id="accordion" class="mt-2">
+    <ng-container *ngFor="let image of patientimage ;let index=index">
+        <div class="card">
+            <div class="card-header" id="heading{{index}}">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" [attr.data-target]="'#image'+index" aria-expanded="true"
+                    [attr.aria-controls]="'image'+index">
+                        date : {{image.date |date}}
+                    </button>
+                </h5> 
+            </div>
+    
+            <div id="{{'image'+index}}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                  <div class="card-body">
+                    <div class="row images">
+    <ng-container *ngFor="let imagePatient of image.patientImage">
+        <div>
+            <img [src]=imagePatient.path class="rounded " alt="{{imagePatient.Date}}">
+            <div class="selected ">
+                <input type="checkbox" [value]=imagePatient.selected>
+            </div>
+
+        </div>
+    </ng-container>
+    
+                        
+                         
+    
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </ng-container>
+
+   
+     
+
+</div> 
+ 

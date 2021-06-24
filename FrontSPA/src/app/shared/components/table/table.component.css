@@ -1,0 +1,128 @@
+.disable{
+    pointer-events: none;
+    color: #6c757d;
+}
+.btn-link{
+    padding: .5rem 1rem;
+ }
+.btn-link:hover{
+ color: #fff;
+}
+.card {
+    box-shadow: 0 9px 23px 3px rgb(64 60 67 / 16%);
+}
+
+.table-container {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.lenght-label ~ span {
+    text-transform: capitalize;
+}
+
+.length {
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    background-color: transparent;
+}
+
+.header-one {
+    display: grid;
+    grid-gap: 5px 10px;
+    justify-content: space-between;
+}
+
+.filter-select {
+    max-width: max-content;
+     border: 1px solid #ced4da;
+}
+.btn-search,.searchSelect{
+    max-width: max-content;
+}
+.filter-select:hover {
+    border-color: var(--primary);
+}
+
+.card-footer {
+    display: grid;
+}
+
+.card-footer p {
+    padding: 8px 12px;
+}
+ 
+@media (max-width: 575.98px) {
+    .header-one {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr);
+    }
+
+    .card-footer {
+        grid-template-rows: repeat(2, 1fr);
+    }
+}
+
+/* // Small devices (landscape phones, less than 768px) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .header-one {
+        grid-template-columns:  1fr;
+        grid-template-rows: repeat(3, 1fr);
+    }
+
+    .card-footer {
+        grid-template-rows: repeat(2, 1fr);
+    }
+}
+
+/* row no data */
+.tableList{
+    position: relative;
+}
+.tableList .nodata{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: aquamarine;
+    
+}
+/* // Medium devices (tablets, less than 992px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .header-one {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card-footer {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* // Large devices (desktops, less than 1200px) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .header-one {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card-footer {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 1200px) {
+    .header-one {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card-footer {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+.searchValue{
+    padding: 5px;
+
+}
+input[type=checkbox]{  
+    width: 20px;
+    height: 20px;
+}

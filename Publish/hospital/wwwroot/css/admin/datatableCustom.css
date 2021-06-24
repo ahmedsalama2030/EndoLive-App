@@ -1,0 +1,62 @@
+﻿.dt-buttons button {
+    margin:   .5rem;
+}
+.dt-buttons{
+    display:block
+}
+
+.card-body{
+    position:relative;
+}
+#search-container{
+    position:absolute;
+    top:20px;
+    right:10px;
+
+}
+
+
+.rtl [class*=icheck-] > input:first-child:checked + input[type=hidden] + label::after,
+.rtl [class*=icheck-] > input:first-child:checked + label::after {
+    transform: translate(12.75px,4.5px) rotate( 45deg );
+}
+@media (max-width:768px) {
+    #search-container {
+        position: static;
+         
+        display:block;
+    }
+}
+.input-group > .form-control{
+    flex:4;
+}
+.input-group > .custom-select {
+    flex:1;
+}
+#mainTable_filter, #mainTable_paginate {
+    display: inline-block;
+    float: right;
+}
+#mainTable_length, #mainTable_info {
+    display: inline-block;
+}
+@media (max-width:768px){
+    #mainTable_filter, #mainTable_paginate, #mainTable_length, #mainTable_info {
+        display: block;
+        float: none;
+    }
+     
+}
+
+
+.btns-operation {
+    text-align: center;
+}
+
+table {
+    text-align: center;
+}
+
+.table td {
+    vertical-align: middle;
+}

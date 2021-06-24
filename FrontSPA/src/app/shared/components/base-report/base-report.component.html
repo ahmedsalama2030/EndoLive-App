@@ -1,0 +1,82 @@
+<div class="base-report   ">
+    <div class=" base-container">
+        <div class="header">
+            <div class="first">
+                <p class="text-header">GALAA M.M.C </p>
+            </div>
+            <div class="second logo text-center">
+                <img src="assets/img/AdminLTELogo.png" width="70" height="70"
+                    class="rounded-circle img-thumbnail img-fluid">
+            </div>
+            <div class="third text-right">
+                <p class="text-header">مجمع الجلاءالطبي للقوات المسلحة
+                    مستشفى الأطفال والنسا التخصصى
+                    قسم مناظير الأطفال
+                </p>
+
+            </div>
+        </div>
+    
+        <div class="body ">
+            <div class="report-name  ">colonoscopy</div>
+                    <div class="row  patient-info justify-content-between px-3">
+                        <div class=" col-12 col-md-7">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>patient name</td>
+                                        <td>{{patient.name}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>patient lab code</td>
+                                        <td>{{patient.labCode}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>patient degree</td>
+                                        <td>{{patient.degreeName}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class=" col-12 col-md-4">
+                            <table class="w-100">
+                                <tbody>
+                                    <tr>
+                                        <td>patinet age</td>
+                                        <td>{{patient.age}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>patient sex</td>
+                                        <td>{{patient.sex}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>last edit</td>
+                                        <td>{{patient.degreeName}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div> 
+              <ng-content #body></ng-content>
+             
+        </div>
+        <div class="footer bg-waring px-5 py-2">
+             <div class="  row">
+                <div class="col">
+                    <i class=" text-primary fas fa-map-marker-alt"></i>
+                     <span> egypt, cairo</span>
+                </div>
+                <div class="col text-center">
+                    <i class=" text-primary fas fa-phone-alt"></i>
+                      <span> 028968687</span>
+                </div>
+                <div class="col text-right">
+                    <i class=" text-primary fas fa-phone-alt"></i>
+                    <span> 010298678</span>
+                </div>
+               
+
+             </div>
+        </div>
+    </div>
+</div>

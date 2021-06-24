@@ -1,0 +1,103 @@
+<div class="table-container ">
+  <div class="  container-fluid">
+    <div class="card">
+      <div class="card-header header-one">
+        <form (ngSubmit)="onSearch()" #search="ngForm">
+          <div class="input-group input-group-sm text-center">
+
+            <button [disabled]="!search.valid" type="submit"
+              class="btn btn-search px-2  btn-info btn-flat form-control form-control-sm text-capitalize" translate><i
+                class="fas fa-search"></i></button>
+            <select name="searchSelect" [(ngModel)]="searchForm.filterType" class="searchSelect   form-control form-control-sm  ">
+              <option *ngFor="let item of filterList" value="{{item.value}}">{{item.name}}</option>
+            </select>
+ 
+            <span class="input-group-append">
+              <input [(ngModel)]="searchForm.filterValue" name="searchValue" type="text"
+                class="form-control form-control-sm">
+             </span>
+
+          </div>
+        </form>
+
+
+ 
+        <div class="text-center ">
+          <span (click)="printPdf()" class="btn btn-outline-info btn-flat btn-sm rounded text-capitalize"
+            translate>table.print Pdf</span>
+          <span (click)="printExcel()" class="btn btn-outline-warning btn-flat btn-sm rounded mx-1 text-capitalize"
+            translate>table.print excel</span>
+        </div>
+        <div class=" text-sm-center text-md-right">
+          <div>
+            <span class="btn-sm" translate>table.show</span>
+            <select class="filter-select    btn-flat btn-sm mx-1" (change)="LenghtChanged($event)">
+              <option *ngFor="let item of listEntires" [value]=item>{{item}}</option>
+            </select>
+            <span class="btn-sm text-capitalize" translate>table.entries</span>
+          </div>
+
+
+
+
+        </div>
+      </div>
+      <div class="card-header">
+        <button (click)="onCreateAction()" routerLinkActive="router-link-active" type="button"
+          class="btn btn-outline-success text-capitalize btn-sm btn-link">
+          <i class="fa fa-plus"></i>
+        </button>
+        <button (click)="onEditAction()" [ngClass]="{'disable': oneAction===false}"
+          type="button"
+          class="btn btn-outline-info mx-2 btn-sm text-capitalize btn-link">
+          <i class="fa fa-edit"></i>
+        </button>
+        <button (click)="onDeleteAction()" [ngClass]="{'disable': moreAction===false}"
+            type="button"
+          class="btn btn-outline-danger btn-sm  text-capitalize btn-link">
+          <i class="fa fa-trash"></i>
+
+        </button>
+        <ng-content slect='.morection'></ng-content>
+        
+      </div>
+      <div class="card-body p-0">
+        <table id="tableList" class="table table-striped table-hover table-responsive-md nodata">
+
+          <ng-content select=".body"></ng-content>
+          <ng-container  *ngIf="Pagination?.totalItems===0">
+            
+              <tr> 
+                <td class="my-5 text-capitalize text-weight text-danger text-center text-bold" colspan="10" translate="">table.no records</td>
+                </tr>
+             
+          </ng-container>
+          
+        </table>
+      </div>
+      <div class="card-footer  ">
+   <ng-container  *ngIf="Pagination?.totalItems!=0">
+         <div class="mx-sm-auto mx-md-0 text-md-left">
+          <pagination (pageChanged)="pageChanged ($event)" [boundaryLinks]="true" [(ngModel)]="Pagination.currentPage"
+            [itemsPerPage]="Pagination.itemPerPage" [totalItems]="Pagination.totalItems" previousText="&lsaquo;"
+            nextText="&rsaquo;" [rotate]=true [maxSize]="10" class="m-0" firstText="&laquo;" lastText="&raquo;">
+          </pagination>
+        </div> 
+        <div class="text-lg-c text-md-right text-sm-center text-capitalize text-showing">
+          <div class=" m-0 ">
+            <span translate>table.showing</span>
+            <span class="text-primary mx-1">{{Pagination!.from}}</span>
+            <span translate>table.to</span>
+            <span class="text-primary mx-1"> {{Pagination!.to}}</span>
+            <span class="text-capitalize" translate>table.of</span>
+            <span class="text-primary mx-1"> {{Pagination!.totalItems}}</span>
+            <span class="text-capitalize" translate>table.entries</span>
+
+
+          </div>
+
+
+        </div>
+      </ng-container>
+      </div>
+    </div>

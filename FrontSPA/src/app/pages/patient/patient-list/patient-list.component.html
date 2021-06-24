@@ -1,0 +1,90 @@
+<!-- Content Header (Page header) -->
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 text-dark">{{ 'Patients' | translate }}</h1>
+
+      </div><!-- /.col -->
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a [routerLink]="['']" routerLinkActive="router-link-active">Home</a></li>
+          <li class="breadcrumb-item active">Patients</li>
+        </ol>
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+<section class="content hg">
+  <div class="container">
+    <!-- Info boxes -->
+    <eg-table 
+    [filterList]=filterList 
+    [moreAction]=moreAction 
+    [oneAction]=oneAction 
+    [Pagination]=pagination 
+    (searchChange)="changeSearch($event)" 
+    (listLenghtChange)="changeLenghtSize($event)"
+    (PageChanged)="PageChanged($event)"
+    (OnCreate)=OnCreate($event) 
+    (onDelete)=onDelete($event)
+    (OnEdit)=OnEdit($event)>
+   <ng-container class="moreaction"> <!-- moreaction -->
+        <div class="btn-group"  >
+          <button type="button" class=" btn btn-outline-primary text-capitalize dropdown-toggle mx-2 btn-link"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-ellipsis-v"></i>
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" [routerLink]="['']">ercp</a>
+
+          </div>
+        </div>
+      </ng-container> <!-- ./moreaction  -->
+      <ng-container class="body">  <!--  body  start -->
+        <thead class="text-center table-header text-capitalize">
+          <tr>
+            <th scope="col">
+              <input (change)="checkedChangeAll()" type="checkbox" [checked]=checkAll>
+            </th>
+            <th class="text-capitalize" translate>patient.name</th>
+            <th translate>patient.lab code</th>
+            <th translate>patient.degree</th>
+            <th translate>patient.phone</th>
+            <th translate>patient.address</th>
+            <th translate>patient.department</th>
+          </tr>
+        </thead>
+        <tbody class="text-center">
+          <tr *ngFor="let item of patients">
+            <td><input type="checkbox" class="p-2" (change)="checkChange(item.id,$event)" [checked]=item.selected></td>
+            <td>{{item.name}}</td>
+            <td>{{item.labCode}}</td>
+            <td>{{item.degreeName}}</td>
+            <td>{{item.state}}</td>
+            <td>{{item.phone}}</td>
+            <td>{{item.departmentName}}</td>
+          </tr>
+        </tbody>
+      </ng-container> <!--  ./body -->
+   </eg-table>
+ </div>
+</section>
+
+<!-- template modal start -->
+<ng-template #template> 
+  <div class="modal-header text-capitalize">
+    <h4 class="modal-title pull-left"translate>general.delete</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body text-capitalize">
+    <p translate>general.are you sure delete this records</p>
+  </div>
+  <div class="modal-footer text-capitalize">
+    <button class="btn btn-primary btn-md disable" [ngClass]="{'disable': checkSave}" (click)="confirmDelete()"translate>general.save</button> 
+   </div>
+</ng-template>
+<!-- template modal end -->

@@ -1,0 +1,180 @@
+.topTitle {
+     
+   .top {
+        background-color: var(--main-color);
+        color: #fff;
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem;
+            font-weight: 500;
+
+            @include media-breakpoint-down("lg") {
+                flex-direction: column;
+                text-align: center;
+            }
+
+
+            @include media-breakpoint-down("md") {
+                display: none;
+            }
+        }
+
+        .info {
+            .info-container {
+                // margin: 0 1rem;
+                text-transform: capitalize;
+
+                .icon {
+                    margin: 0 .5rem;
+                }
+
+                .detail {
+                    font-size: .9rem;
+                }
+                span{
+                    float: left;
+
+                }
+            }
+        }
+
+        .social {
+            a {
+                margin: 0 .5rem;
+                color: #fff;
+            }
+        }
+    }
+
+    .middel {
+        display: flex;
+        align-items: center;
+        border-bottom: 0.5px solid rgba(#ccc,.3);
+
+        .logo {
+            display: flex;
+            align-items: center;
+            padding: .5rem 5rem;
+            flex-grow: 1;
+
+            img {
+                margin: 0 1rem;
+                width: 100px;
+                height: 100px;
+                padding: .5rem;
+           @include prifixerAll(border-radius, 50%);
+          @include media-breakpoint-down("sm") {
+            width: 50px;
+                height: 50px;
+        }
+            }
+
+            span {
+                a {
+                    color: var(--main-color);
+                    font-weight: 600;
+                    text-transform: capitalize;
+                    font-size: 1.5rem;
+                    @include media-breakpoint-down("md") {
+                        font-size: 1rem;
+                    }
+                }
+            }
+        }
+
+        .contact {
+            text-align: center;
+            flex-grow: 1;
+            @include media-breakpoint-down("md") {
+                display: none;
+            }
+
+
+            span {
+                margin: 0 1rem;
+                font-weight: 700;
+
+                i {
+                    color: var(--main-color);
+                }
+            }
+        }
+    }
+
+    
+         
+   
+}
+ 
+header{
+    
+    &.sticky{
+        position: sticky;
+        top: 0;
+        background-color: #fff;
+        z-index:$z-index-header ;
+         @include prifixerAll( box-shadow, 4px 4px 10px rgba(#000,.2));
+
+    }
+    .menus {
+       
+        color: var(--main-color);
+      
+        ul {
+            display: flex;
+            justify-content: center;
+            @include media-breakpoint-down("md") {
+             overflow-y: auto;
+              display: block ;
+             height: 0;
+             transition:height  .5s ease-in-out;
+
+             &.open{
+              height: 85vh;
+            }             
+
+             }
+             
+
+            li {
+                a {
+                    padding: 1.5rem;
+                    display: inline-block;
+                    font-weight: 700;
+                    text-transform: capitalize;
+                    color: #000;
+                      transition: border-bottom-color .5s;
+                    border-bottom-width: 100%;
+                    border-bottom-style: solid;
+                    border-bottom-color: transparent;
+ 
+                    &.active {
+                        color:var(--main-color);
+                        border-bottom-color: var(--main-color);
+
+                    }
+                    &:hover {
+                        color:var(--main-color);
+                        border-bottom-color: var(--main-color);
+
+                    }
+                   }
+            }
+        }
+        .toggle{
+ 
+             i{
+                font-size: 2rem;
+             }
+             text-align: end;
+             padding: 1rem 2rem;
+             display: none;
+             @include media-breakpoint-down("md") {
+                display: block;
+               }
+        }
+
+}
+}

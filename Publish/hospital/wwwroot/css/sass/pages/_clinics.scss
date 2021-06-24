@@ -1,0 +1,76 @@
+.time-table {
+    .instructions {
+        margin-bottom: 4rem;
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--main-color);
+        }
+
+        ul {
+            padding: 0 1rem;
+            color: $black-500;
+            font-size: 1.2rem;
+            font-weight: 500;
+
+            li {
+                position: relative;
+
+                &::before {
+                    position: absolute;
+                    content: '*';
+                     top: 0;
+                    margin: .2rem;
+                    color: var(--main-color);
+                }
+            }
+        }
+    }
+    .table-content{
+        display: flex;
+        justify-content: center;
+         
+    }
+    table{
+         overflow: auto;
+        text-align: center;
+        text-transform: capitalize;
+        border-collapse: collapse;
+        margin-bottom: 5rem;
+        display: block;
+ 
+        thead{
+            background-color: $topHeader;
+            color: #fff;
+            td{
+                border:1px solid #fff;
+                font-weight: 700;
+            }
+ 
+         }
+         td{
+             padding: 1.5rem .8rem;
+         }
+         .first{
+            @extend %firstLast;
+         }
+         .last{
+            @extend %firstLast;
+         }
+    }
+}
+
+.rtl .time-table .instructions ul li::before  {
+    right: -10px; 
+     
+}
+
+.ltr .time-table .instructions ul li::before{
+    left: -10px; 
+     
+}
+%firstLast{
+    background-color: #e6e6e6;
+
+}

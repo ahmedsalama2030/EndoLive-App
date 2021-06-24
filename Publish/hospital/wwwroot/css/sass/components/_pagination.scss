@@ -1,0 +1,17 @@
+.pagination-main{
+    span{
+        padding: .2rem .7rem ;
+         font-weight: 900;
+        color: var(--main-color);
+        border: 1px solid var(--main-color);
+        @include prifixerAll (border-radius,5px);
+        text-align: center;
+        display: inline-block;
+        cursor: pointer;
+        &:hover{
+            background-color: var(--main-color);
+            color: #fff;
+        }
+ 
+    }
+}
