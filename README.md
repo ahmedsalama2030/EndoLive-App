@@ -38,20 +38,23 @@
 	 
  
 > **2- Languages and Technologies used**
-forversion 1
+
+>for version 1
 1.    Asp core mvc .
 2.   Adminlte Template 
 3.   bootstrap 
 4.   datatable third party.
- 5.  sql server 2014.
+5.  sql server 2014.
 6.   jquery & js
+
+
 > for version 2
 
-1- angular 11
-2- asp core (api).
-3- video js (record stream video).
-4- adminlte template
-5- swagger for test& doc  api
+   1-    angular 11.
+   2-   asp core (api).
+   3- video js (record stream video).
+   4- adminlte template.
+   5- swagger for test& doc  api.
  
 			
  
