@@ -50,11 +50,11 @@
 
 > for version 2
 
-   1-    angular 11.
-   2-   asp core (api).
-   3- video js (record stream video).
-   4- adminlte template.
-   5- swagger for test& doc  api.
+   1-angular 11.
+   2-asp core (api).
+   3-video js (record stream video).
+   4-adminlte template.
+   5-swagger for test& doc  api.
  
 			
  
