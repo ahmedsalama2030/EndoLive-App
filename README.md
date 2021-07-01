@@ -53,15 +53,15 @@
 > for version 2
 
    1-angular 11.with(adminlte template )
-   3- some third parity in angular (ngx )
-   2-asp core (api).
-   3-video js (record stream video).
-   4-adminlte template.
-   5-swagger for test& doc  api.
-   6- dink to pdf for report on server
-   7- sql server 2019 datavase.
+   2- some third parity in angular (ngx )
+   3-asp core (api).
+   4-video js (record stream video).
+   5-adminlte template.
+   6-swagger for test& doc  api.
+   7- dink to pdf for report on server
+   8- sql server 2019 datavase.
    9- jwt third party
-   8- use filestream on sql server for images backu.p
+   10- use filestream on sql server for images backu.p
  
 			
  
