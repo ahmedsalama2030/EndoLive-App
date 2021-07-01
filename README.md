@@ -36,8 +36,7 @@
       
 >  1- **About Project**
   
-     This is project(v1) production for galaa hosppital Endoscopy department (9/2020)  .
-	 The garages were connected using nanostation wireless.
+     This is project(v1) production for galaa hosppital Endoscopy department (9/2020)  .and in 5/2021 development  endoscopy system to add new feature like(record) by(asp core api and angular 11) we finish api 80% and front angular 50%
 	 
  
 > **2- Languages and Technologies used**
@@ -53,11 +52,16 @@
 
 > for version 2
 
-   1-angular 11.
+   1-angular 11.with(adminlte template )
+   3- some third parity in angular (ngx )
    2-asp core (api).
    3-video js (record stream video).
    4-adminlte template.
    5-swagger for test& doc  api.
+   6- dink to pdf for report on server
+   7- sql server 2019 datavase.
+   9- jwt third party
+   8- use filestream on sql server for images backu.p
  
 			
  
