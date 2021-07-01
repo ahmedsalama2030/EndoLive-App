@@ -7,7 +7,7 @@ export  const components:any[]=[
     TableComponent,BaseReportComponent,
     ReportParamenterOperationComponent,ReportInfoComponent,PhotoReportComponent]
 
-
+ 
 export * from "./table/table.component";
 export * from "./base-report/base-report.component";
 export * from "./report-paramenter-operation/report-paramenter-operation.component";

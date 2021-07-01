@@ -9,6 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
 import { LoadingBarService } from '@ngx-loading-bar/core';
 import { DoctorService } from 'src/app/core/services/doctor.service';
+import { AlertService } from 'src/app/core/services/alert.service';
 
 @Component({
   selector: 'eg-doctor-list',
@@ -39,27 +40,26 @@ export class DoctorListComponent implements OnInit, OnDestroy {
     private router: Router,
     private routerActive: ActivatedRoute,
     private modalService: BsModalService,
-    private toster: ToastrService,
-    private loadingBar: LoadingBarService,
+    private alertService:AlertService,
+        private loadingBar: LoadingBarService,
   ) { }
   ngOnInit(): void {
     this.routerActive.data.subscribe(         ///get data resolver Doctor list 
       (res) => {
         this.doctors = res['data'].result;
         this.pagination = res['data'].pagination!;
-        console.log(res);
-      }, err => { this.toster.error('fail') }
+       }, err => { this.alertService.error() }
     );
     this.getFilterList();  // get filter list
   }
   getFilterList() {       // set filter type
     this.filterList = [
-      { name: 'name', value: 'name' },
-      { name: 'phone', value: 'phone' },
-      { name: 'university', value: 'university' },
-      { name: 'is Consultant', value: 'isConsultant' },
-      { name: 'is Show Report ', value: 'isShowReportMenu' },
-      { name: 'department', value: 'department' }
+      { name: 'name', value: 'name' ,searchTag:'doctor'},
+      { name: 'phone', value: 'phone',searchTag:'doctor' },
+      { name: 'university', value: 'university',searchTag:'doctor' },
+      { name: 'is consultant', value: 'isConsultant',searchTag:'doctor' },
+      { name: 'is Show Report', value: 'isShowReportMenu',searchTag:'doctor' },
+      { name: 'department', value: 'department',searchTag:'doctor' }
     ];
   }  
   loadData() {           // lget Doctor from api      
@@ -119,8 +119,8 @@ export class DoctorListComponent implements OnInit, OnDestroy {
     this.loadingBar.start();
     this.checkSave=true;
     this.doctorService.deleteRange(this.getSelectedList()).pipe(delay(500)).subscribe(
-      () => { this.loadData(); this.modalService.hide(); this.toster.success('success')},
-      () => { this.toster.error('fail') },
+      () => { this.loadData(); this.modalService.hide(); this.alertService.success()},
+      () => { this.alertService.error() },
       ()=>{this.loadingBar.complete(),this.loadingBar.stop(),    this.checkSave=false; }
     );
   }

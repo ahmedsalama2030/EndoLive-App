@@ -51,7 +51,8 @@ namespace WebApi.Controllers.Reports.ColonoscopyReports
         [HttpPost("register")]
         public async Task<IActionResult> Register(ColonoscopySettingRegister ColonoscopySettingRegister)
         {
-            var ColonoscopySetting = _mapper.Map<ColonoscopySetting>(ColonoscopySettingRegister);
+             var ColonoscopySetting = _mapper.Map<ColonoscopySetting>(ColonoscopySettingRegister);
+            ColonoscopySetting.CreatedDate=DateTime.UtcNow;
             _colonoscopySetting.Table.Add(ColonoscopySetting);
             var result = await _colonoscopySetting.SaveAllAsync();
             if (result)

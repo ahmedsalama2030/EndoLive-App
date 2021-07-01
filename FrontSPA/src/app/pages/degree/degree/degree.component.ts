@@ -9,6 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
 import { LoadingBarService } from '@ngx-loading-bar/core';
  import { DegreeService } from 'src/app/core/services/degree.service';
+import { AlertService } from 'src/app/core/services/alert.service';
  @Component({
   selector: 'degree',
   templateUrl: './degree.component.html',
@@ -34,6 +35,7 @@ export class DegreeComponent implements OnInit, OnDestroy {
   checkSave:boolean=false;
   addStatus:boolean=false;
   editStatus:boolean=false;
+  checkStatus:boolean=false;
   form:any={}
   constructor(
     private degreeService: DegreeService,
@@ -41,7 +43,7 @@ export class DegreeComponent implements OnInit, OnDestroy {
     private router: Router,
     private routerActive: ActivatedRoute,
     private modalService: BsModalService,
-    private toster: ToastrService,
+    private alertService:AlertService,
     private loadingBar: LoadingBarService,
    ) { }
   ngOnInit(): void {
@@ -50,22 +52,22 @@ export class DegreeComponent implements OnInit, OnDestroy {
         this.degrees = res['data'].result;
         this.pagination = res['data'].pagination!;
         console.log(res);
-      }, err => { this.toster.error('fail') }
+      }, err => { this.alertService.error() }
     );
     this.getFilterList();  // get filter list
   }
   getFilterList() {       // set filter type
     this.filterList = [
-      { name: 'name', value: 'name' },
-      { name: 'nameAr', value: 'name Ar' },
+      { name: 'name', value: 'name',searchTag:'degree' },
+      { name: 'name ar', value: 'name Ar' ,searchTag:'degree'},
     
     ];
   }  
   loadData() {   
     // lget Degree from api  
-     
-    this.degreeService.get(this.pagination.currentPage, this.pagination.itemPerPage, this.pagination.filterType, this.pagination.filterValue).pipe(takeUntil(this.notifier)).subscribe(
+     this.degreeService.get(this.pagination.currentPage, this.pagination.itemPerPage, this.pagination.filterType, this.pagination.filterValue).pipe(takeUntil(this.notifier)).subscribe(
       (res: PaginationResult<Degree[]>) => {
+        console.log(res)
          this.degrees = res.result;
         this.pagination = res.pagination!;
       }
@@ -80,6 +82,7 @@ export class DegreeComponent implements OnInit, OnDestroy {
 
     this.pagination.itemPerPage = event;
     this.loadData();
+    console.log('efgf')
     console.log(event)
 
   }
@@ -121,9 +124,9 @@ export class DegreeComponent implements OnInit, OnDestroy {
       (res)=>{
         this.addStatus=false; 
         this.loadData();
-        this.toster.success('success')},
-      ()=>{this.loderClose(),this.toster.error('error')},
-      ()=>{this.loderClose()}
+        this.alertService.success()},
+      ()=>{this.closeSpinner(),this.alertService.error()},
+      ()=>{this.closeSpinner()}
     )
   
   }
@@ -134,9 +137,9 @@ export class DegreeComponent implements OnInit, OnDestroy {
           ()=>{
             this.editStatus=false; 
            this.editStatus; 
-            this.toster.success('success')},
-          ()=>{this.loderClose();this.toster.error('error')},
-          ()=>{this.loderClose()}
+            this.alertService.success()},
+          ()=>{this.closeSpinner();this.alertService.error()},
+          ()=>{this.closeSpinner()}
         )
           
   }
@@ -156,12 +159,11 @@ export class DegreeComponent implements OnInit, OnDestroy {
 
   }
   confirmDelete() {             // action delete confirm
-    this.loadingBar.start();
-    this.checkSave=true;
+    this.openSpinner();
     this.degreeService.deleteRange(this.getSelectedList()).pipe(delay(500)).subscribe(
-      () => { this.loadData(); this.modalService.hide(); this.toster.success('success')},
-      () => { this.toster.error('fail') },
-      ()=>{this.loadingBar.complete(),this.loadingBar.stop(),    this.checkSave=false; }
+      () => { this.loadData(); this.modalService.hide(); this.alertService.success()},
+      () => { this.alertService.error() ;this.closeSpinner()},
+      ()=>{ this.closeSpinner() }
     );
   }
 
@@ -176,9 +178,20 @@ export class DegreeComponent implements OnInit, OnDestroy {
     } else { this.moreAction = this.oneAction = false }
    }
 
-   loderClose(){
-    this.loadingBar.complete();this.loadingBar.stop()
+    
+
+   openSpinner(){
+    this.checkSave=true;
+
+    this.loadingBar.start();        // on edit operation
+      this.checkStatus = true;
    }
+  closeSpinner(){
+    this.checkStatus = false;
+    this.loadingBar.stop();
+    this.loadingBar.complete();
+    this.checkSave=false;
+  }
   ngOnDestroy(): void {   // destpory subscription
     this.notifier.next();
     this.notifier.complete();

@@ -47,7 +47,7 @@ namespace WebApi
         {
             services.AddInfrastructure(options =>
            {
-               options.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
+               options.UseMySql(Configuration.GetConnectionString("ProductionConnection"));
            }, Configuration.GetSection("AppSettings:Token").Value);
             services.AddControllers().AddNewtonsoftJson(options =>
             {

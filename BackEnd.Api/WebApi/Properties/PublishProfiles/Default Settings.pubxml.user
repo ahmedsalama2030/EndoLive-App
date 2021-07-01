@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAcdrORKe5FUWmmVrwRFEkcQAAAAACAAAAAAAQZgAAAAEAACAAAABMGO5zlfy9cfgSW1UwH++nqE6o7rS8MLUevCaE3HsCcwAAAAAOgAAAAAIAACAAAAAyPWVjLAr/jEDC5IsFOuJPh+K5S5LTd7sZWrXrxhOk6CAAAACCP55oXQ4fEfHRnkjMmjSPGGYWpGX3aXX4wFFJQ8xLJEAAAAB72JkwSxLFF6M/cvXJAgTOHjoXiv/jaWRNUxZahQoBmJi7Vz+QEontv7DqMubHApqMiU18YwQImJ5hsU6B3Mzt</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="ProductionConnection">
+      <Value>Server=MYSQL5047.site4now.net%3bDatabase=db_a76d9f_endoliv%3bUid=a76d9f_endoliv%3bPwd=Ahmed9090</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

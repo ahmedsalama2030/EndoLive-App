@@ -9,6 +9,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Doctor } from '../../models/Entities/Doctor';
 import { PaginationResult } from '../../models/hepler/Pagination ';
+import { AlertService } from '../../services/alert.service';
 import { DoctorService } from '../../services/doctor.service';
 
 @Injectable({
@@ -18,14 +19,14 @@ export class DoctorListResolver implements Resolve<PaginationResult<Doctor[]> | 
   constructor(
     private router:Router,
     private doctorService:DoctorService,
-    private toster:ToastrService)
+    private alertService: AlertService)
      { }
      resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):Observable<PaginationResult<Doctor[]> | null> {
       return this.doctorService.get().pipe(
         
          catchError(error => {
                this.router.navigate(['/doctors']);
-              this.toster.error('fail');
+              this.alertService.error();
              return of(null);
          })  
      )};

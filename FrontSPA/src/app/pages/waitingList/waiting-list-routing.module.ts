@@ -4,8 +4,8 @@ import { WaitinglistEditComponent } from './waitinglist-edit/waitinglist-edit.co
  import { WaitinglistListComponent } from './waitinglist-list/waitinglist-list.component';
 
 const routes: Routes = [
-  {path:'',component:WaitinglistListComponent},
-  {path:'edit',component:WaitinglistEditComponent},
+  {path:'',component:WaitinglistListComponent, data: { animation: 'Page' }},
+  {path:'edit',component:WaitinglistEditComponent, data: { animation: 'Page' }},
   {path:'**',redirectTo:''}
 ];
 

@@ -4,7 +4,7 @@ import { DegreeResolver } from 'src/app/core/resolvers/degree/degree.resolver';
 import { DegreeComponent } from './degree/degree.component';
 
 const routes: Routes = [
-  {path:'',component:DegreeComponent,resolve:{data:DegreeResolver}},
+  {path:'',component:DegreeComponent,resolve:{data:DegreeResolver}, data: { animation: 'Page' }},
   {path:'**',redirectTo:''}
 
 ];

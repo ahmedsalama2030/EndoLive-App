@@ -13,6 +13,8 @@ export class DegreeService {
   baseUrl = environment.apiUrl+'degrees/';
   constructor(private http: HttpClient) { }
   get(pageNumber?: any, itemsPerPage?: any, filterType?: any, filterValue?: any, sortType?: any): Observable<PaginationResult<Degree[]>> {
+    
+    
     const paginationResult: PaginationResult<Degree[]> = new PaginationResult<Degree[]>();
     let params = new HttpParams();
     if (pageNumber != null && itemsPerPage == null) {
@@ -22,7 +24,7 @@ export class DegreeService {
       params = params.append('filterValue', filterValue);
       params = params.append('sortType', sortType);
      }
-     
+     console.log(itemsPerPage);
      return this.http.get<Degree[]>(this.baseUrl,{observe:'response',params}).pipe(
        map(res=>{
          paginationResult.result=res.body ||  undefined;

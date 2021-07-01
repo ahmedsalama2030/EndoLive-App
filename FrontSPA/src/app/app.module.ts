@@ -16,6 +16,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NgModule } from '@angular/core';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { ToastrModule } from 'ngx-toastr';
+import { SharedModule } from './shared/shared.module';
  
    export function tokenGetter() {
   return localStorage.getItem('token');
@@ -26,20 +27,30 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
      RecordVideoComponent,
-     
-
-
+      
+ 
+ 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
      BrowserAnimationsModule,
     FormsModule,
-    CoreModule,
-    HttpClientModule,
+    CoreModule, 
+    HttpClientModule, 
     LoadingBarModule,
-    ToastrModule.forRoot(),
-    TranslateModule.forRoot({
+    SharedModule,
+    ToastrModule.forRoot(
+
+      { preventDuplicates: false,
+        maxOpened:1,
+        timeOut:2000,
+        progressBar :true,
+        positionClass :'toast-top-center'
+      
+      }
+    ),
+     TranslateModule.forRoot({
       defaultLanguage:'en',
       loader: {
           provide: TranslateLoader,
@@ -55,10 +66,11 @@ export function HttpLoaderFactory(http: HttpClient) {
         disallowedRoutes: ['localhost:5000/api/auth']
       }
     }),
-
-
+ 
+ 
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
+  

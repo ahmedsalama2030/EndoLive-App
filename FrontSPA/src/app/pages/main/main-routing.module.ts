@@ -3,6 +3,7 @@ import { HomeComponent } from './../home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RecordVideoComponent } from '../record-video/record-video.component';
+import { PreventUnsavedChangesGuard } from 'src/app/core/guards/prevent-unsaved-changes.guard';
 
 
 const routes: Routes = [
@@ -15,12 +16,12 @@ const routes: Routes = [
         path: '', redirectTo: 'home'
       },
       {
-        path: 'home', component: HomeComponent, data: { animation: 'HomePage' }
+        path: 'home', component: HomeComponent, data: { animation: 'Page' }
 
       },
 
       {
-        path: 'record', component: RecordVideoComponent, data: { animation: 'Page' }
+        path: 'record',canDeactivate:[PreventUnsavedChangesGuard], component: RecordVideoComponent, data: { animation: 'Page' }
       } 
       ,
       {

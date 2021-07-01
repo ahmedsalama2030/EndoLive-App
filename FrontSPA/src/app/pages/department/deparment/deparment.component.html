@@ -1,27 +1,28 @@
-<!-- Content Header (Page header) -->
-<div class="content-header">
-    <div class="container">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1 class="m-0 text-dark"> department</h1>
-
+<div class="content-header text-capitalize"  >
+    <div class="container-fluid">
+        <div class="row mb-2 title-section  ">
+            <div class="col-sm-6 d-none d-md-block">
+                <h6 class="m-0 text-dark" translate>dept.departments</h6>
             </div><!-- /.col -->
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a [routerLink]="['']" routerLinkActive="router-link-active">Home</a>
-                    </li>
-                 </ol>
+            <div class="col-sm-6 ">
+                <ol class="breadcrumb float-sm-right   ">
+                    <li class="breadcrumb-item"><a href="#"translate>home.home</a></li>
+                    <li class="breadcrumb-item active p-0 "> <span class="mx-1" translate>dept.departments</span></li>
+                </ol> 
             </div><!-- /.col -->
         </div><!-- /.row -->
-    </div><!-- /.container --> 
+    </div><!-- /.container-fluid -->
 </div>
-<!-- /.content-header -->
 <section class="content hg">
     <div class="container">
         <!-- Info boxes -->
         <form #formOperation='ngForm'>
 
-            <eg-table [filterList]=filterList [moreAction]=moreAction [oneAction]=oneAction [Pagination]=pagination
+            <eg-table 
+            [filterList]=filterList
+             [moreAction]=moreAction 
+             [oneAction]=oneAction 
+             [Pagination]=pagination
                 (searchChange)="changeSearch($event)" (listLenghtChange)="changeLenghtSize($event)"
                 (PageChanged)="PageChanged($event)" (OnCreate)=OnCreate($event) (onDelete)=onDelete($event)
                 (OnEdit)=OnEdit($event)>
@@ -34,9 +35,9 @@
                             <th scope="col">
                                 <input (change)="checkedChangeAll()" type="checkbox" [checked]=checkAll>
                             </th>
-                            <th class="text-capitalize" translate>department.name</th>
-                            <th translate>department.name Ar</th>
-                            <th translate>department.lastEdit</th>
+                            <th class="text-capitalize" translate>dept.name</th>
+                            <th translate>dept.name ar</th>
+                            <th translate>dept.lastEdit</th>
                         </tr>
                     </thead>
                     <tbody class="text-center">
@@ -51,14 +52,12 @@
                             </td>
 
                             <td>
-                                <input #nameinput="ngModel" InputTirmFilter class="form-control form-control-sm"
+                                <input #nameinput="ngModel" InputTirmFilter class="form-control  input-mix form-control-sm"
                                     name="name" [(ngModel)]="form.name" type="text" spaceValidator required>  
-                                <div class="text-danger text-capitalize">
-                                    <p *ngIf="nameinput.errors?.textempty">not allow space</p>
-                                 </div>
+                                
                             </td>
                             <td>
-                                <input InputTirmFilter class=" form-control form-control-sm" name="nameAr"
+                                <input InputTirmFilter class=" form-control form-control-sm input-mix" name="nameAr"
                                     [(ngModel)]="form.nameAr" type="text">
                             </td>
                             <td>

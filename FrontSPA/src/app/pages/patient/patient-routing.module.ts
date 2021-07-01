@@ -6,8 +6,8 @@ import { PatientListResolver } from 'src/app/core/resolvers/patient/patient-list
 import { PatientOperationComponent } from './patient-operation/patient-operation.component';
 
 const routes: Routes = [
-  {path:'',component:PatientListComponent,resolve:{data:PatientListResolver}},
-  {path:'operation/:id',component:PatientOperationComponent,resolve:{data:PatientOperationResolver}},
+  {path:'',component:PatientListComponent,resolve:{data:PatientListResolver}, data: { animation: 'Page' }},
+  {path:'operation/:id',component:PatientOperationComponent,resolve:{data:PatientOperationResolver}, data: { animation: 'Page' }},
    {path:'**',redirectTo:''}
 ];
 

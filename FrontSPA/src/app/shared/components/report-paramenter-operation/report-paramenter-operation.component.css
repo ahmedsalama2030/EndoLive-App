@@ -1,9 +1,26 @@
 .card-body{
-    height: 70vh;
+    height: 80vh;
     overflow-y: scroll;
+}
+@media (max-width:576px) {
+    .card-body{
+        overflow-y: scorll;
+
+
+    }
+    
 }
 #parameter label{
 font-weight: bold;
 text-transform: capitalize;
 font-size: 1.5rem;
+}
+#mideanew{
+text-align: center;
+padding: 1rem;
+
+}
+#mideanew #upload-icon{
+margin-top: 1rem;
+color: var(--primary);
 }

@@ -1,0 +1,9 @@
+D:\projects\endoscopy\BackEnd.Api\Core\bin\Release\netcoreapp3.1\Core.deps.json
+D:\projects\endoscopy\BackEnd.Api\Core\bin\Release\netcoreapp3.1\Core.dll
+D:\projects\endoscopy\BackEnd.Api\Core\bin\Release\netcoreapp3.1\Core.pdb
+D:\projects\endoscopy\BackEnd.Api\Core\obj\Release\netcoreapp3.1\Core.csprojAssemblyReference.cache
+D:\projects\endoscopy\BackEnd.Api\Core\obj\Release\netcoreapp3.1\Core.AssemblyInfoInputs.cache
+D:\projects\endoscopy\BackEnd.Api\Core\obj\Release\netcoreapp3.1\Core.AssemblyInfo.cs
+D:\projects\endoscopy\BackEnd.Api\Core\obj\Release\netcoreapp3.1\Core.csproj.CoreCompileInputs.cache
+D:\projects\endoscopy\BackEnd.Api\Core\obj\Release\netcoreapp3.1\Core.dll
+D:\projects\endoscopy\BackEnd.Api\Core\obj\Release\netcoreapp3.1\Core.pdb

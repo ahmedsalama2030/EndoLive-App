@@ -190,9 +190,7 @@ D:\projects\endoscopy\BackEnd.Api\WebApi\obj\Debug\netcoreapp3.1\WebApi.Assembly
 D:\projects\endoscopy\BackEnd.Api\WebApi\obj\Debug\netcoreapp3.1\WebApi.csproj.CoreCompileInputs.cache
 D:\projects\endoscopy\BackEnd.Api\WebApi\obj\Debug\netcoreapp3.1\WebApi.MvcApplicationPartsAssemblyInfo.cs
 D:\projects\endoscopy\BackEnd.Api\WebApi\obj\Debug\netcoreapp3.1\WebApi.MvcApplicationPartsAssemblyInfo.cache
-D:\projects\endoscopy\BackEnd.Api\WebApi\obj\Debug\netcoreapp3.1\ar\WebApi.resources.cs
 D:\projects\endoscopy\BackEnd.Api\WebApi\obj\Debug\netcoreapp3.1\ar\WebApi.resources.dll
-D:\projects\endoscopy\BackEnd.Api\WebApi\obj\Debug\netcoreapp3.1\en\WebApi.resources.cs
 D:\projects\endoscopy\BackEnd.Api\WebApi\obj\Debug\netcoreapp3.1\en\WebApi.resources.dll
 D:\projects\endoscopy\BackEnd.Api\WebApi\obj\Debug\netcoreapp3.1\staticwebassets\WebApi.StaticWebAssets.Manifest.cache
 D:\projects\endoscopy\BackEnd.Api\WebApi\obj\Debug\netcoreapp3.1\staticwebassets\WebApi.StaticWebAssets.xml
@@ -202,3 +200,17 @@ D:\projects\endoscopy\BackEnd.Api\WebApi\obj\Debug\netcoreapp3.1\WebApi.csproj.C
 D:\projects\endoscopy\BackEnd.Api\WebApi\obj\Debug\netcoreapp3.1\WebApi.dll
 D:\projects\endoscopy\BackEnd.Api\WebApi\obj\Debug\netcoreapp3.1\WebApi.pdb
 D:\projects\endoscopy\BackEnd.Api\WebApi\obj\Debug\netcoreapp3.1\WebApi.genruntimeconfig.cache
+D:\projects\endoscopy\BackEnd.Api\WebApi\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\projects\endoscopy\BackEnd.Api\WebApi\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\projects\endoscopy\BackEnd.Api\WebApi\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
+D:\projects\endoscopy\BackEnd.Api\WebApi\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+D:\projects\endoscopy\BackEnd.Api\WebApi\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
+D:\projects\endoscopy\BackEnd.Api\WebApi\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+D:\projects\endoscopy\BackEnd.Api\WebApi\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+D:\projects\endoscopy\BackEnd.Api\WebApi\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+D:\projects\endoscopy\BackEnd.Api\WebApi\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+D:\projects\endoscopy\BackEnd.Api\WebApi\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+D:\projects\endoscopy\BackEnd.Api\WebApi\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+D:\projects\endoscopy\BackEnd.Api\WebApi\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
+D:\projects\endoscopy\BackEnd.Api\WebApi\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+D:\projects\endoscopy\BackEnd.Api\WebApi\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll

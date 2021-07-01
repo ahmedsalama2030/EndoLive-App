@@ -1,30 +1,76 @@
-.table-header{
-    background-color:var(--gray-dark);
+html {
+    overflow-x: hidden;
+}
+.form-control:focus {
+     box-shadow: none 
+}
+  
+
+.ltr form  .input-mix.ng-valid , .ltr .input-mix.ng-valid.required,.ltr .input-mix.ng-invalid:not(form) {
+    border-right: 5px solid var(--primary) !important;
+    border-left:0 !important;
+}
+.ltr form .input-mix.ng-invalid:not(form){
+    border-right-color: var(--danger) !important;
+}
+.rtl form .input-mix.ng-invalid:not(form) {
+    border-left-color: var(--danger) !important;
+
+}
+.rtl  form .input-mix.ng-valid , .rtl .input-mix.ng-valid.required ,.rtl .input-mix.ng-invalid:not(form){
+    border-left: 5px solid var(--primary) !important;
+    border-right:0 !important;
+}
+.rtl .input-raduis{
+border-radius: 0 0.25rem 0.25rem 0 ;
+ }
+  .toast-container{
+text-align: center;
+  }
+.NgxEditor__Placeholder:before{
+    display: none;
+}
+.table-header {
+    background-color: var(--gray-dark);
     color: #fff;
 }
-.important-filed div{
+table thead th,table tr td{
+    vertical-align: middle !important;
+}
+.important-filed div {
     position: relative;
 }
-.important-filed label::before{
-content:'*';
-position: absolute;
-width: 1px; 
-height: 5px;
-color: #f00;
-left: 0;
+table thead{
+    position: sticky;
+}
+.important-filed label::before {
+    content: '*';
+    position: absolute;
+    width: 1px;
+    height: 5px;
+    color: #f00;
+}
+.rtl .important-filed label::before {
+    right: 0;
 
-} 
-.card-img-overlay{
-    background-color: rgba(0, 0, 0, .1);
+}
+.ltr .important-filed label::before {
+    left: 0;
+
+}
+.card-img-overlay {
+    background-color: rgba(0, 0, 0, 0.1);
     z-index: 1000;
 }
-.disable{
+
+.disable {
     pointer-events: none;
     color: #fff;
 }
-*::-webkit-scrollbar {
+
+html::-webkit-scrollbar  {
     width: 6px;
- }
+}
 
 /* Track */
 *::-webkit-scrollbar-track {
@@ -40,21 +86,88 @@ left: 0;
 *::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
-
-  .NgxEditor__Content {
-    min-height: 150px; /* make all of the editor area clickable */
-
-  }
-  .NgxEditor__Content p {
-    margin: 0 0 0 0 !important;
-  }
-.NgxEditor__MenuBar{
-flex-wrap: wrap-reverse;
-width: 80%;
  
+.NgxEditor__Content {
+    min-height: 150px; /* make all of the editor area clickable */
+}
+
+.NgxEditor__Content p {
+    margin: 0 0 0 0 !important;
+}
+
+.NgxEditor__MenuBar {
+    width: 100%;
+    flex-wrap: wrap;
+     background-color: var(--dark) !important;
+}
+.NgxEditor__MenuItem--IconContainer svg {
+    fill: #fff !important;
+
+}
+ .NgxEditor__Dropdown .NgxEditor__Dropdown--Text {
+color: #fff;
 }
 .body-parameter .parameter p {
     margin-bottom: 0.1rem;
 }
 
+.dit-rtl {
+    direction: rtl;
+}
+
+.dit-ltr {
+    direction: ltr;
+}
+
+/* title section */
+.rtl .title-section div:first-of-type {
+    text-align: start;
+    display: block;
+}
+
+@media (max-width: 767px) {
+    .title-section, .title-section div:last-of-type ol {
+        justify-content: center !important;
+    }
+}
+
+.rtl .title-section div:last-of-type ol {
+    justify-content: flex-end;
+    width: 100%;
+}
+
+/* side bar */
+.layout-navbar-fixed .wrapper .brand-link {
+    transition: width 0s ease-in-out;
+}
+
+/* record */
+.rtl .patient-box {
+    text-align: right;
+}
+
+/*  */
+.rtl label {
+    display: inline-block;
+    text-align: right;
+}
+
+.ltr label {
+    display: inline-block;
+    text-align: left;
+}
+
+/* table */
+.rtl .text-show-info {
+    text-align: left !important;
+}
+
  
+ .card-body::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+   }
+   /* //dropdown-menu */
+   .dropdown-menu span{
+       cursor: pointer;
+   }

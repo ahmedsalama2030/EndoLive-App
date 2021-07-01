@@ -19,8 +19,8 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "../wwwroot",
-            "index": "src/index.html",
+            "outputPath": "../BackEnd.Api/WebApi/wwwroot",
+             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
@@ -28,13 +28,24 @@
             "assets": [
               "src/favicon.ico",
               "src/assets"
-            ],
+            ], 
+           
             "styles": [
-                   "./src/assets/css/styles.css"
-                ],
+                "node_modules/admin-lte/plugins/fontawesome-free/css/all.css",
+              "node_modules/admin-lte/plugins/overlayScrollbars/css/OverlayScrollbars.css",
+              "node_modules/admin-lte/dist/css/adminlte.css" ,
+              "node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
+              "./src/assets/css/styles.css"
+             ],
             "scripts": [
-               
-             ]
+              "node_modules/admin-lte/plugins/jquery/jquery.js",
+              "node_modules/admin-lte/plugins/bootstrap/js/bootstrap.bundle.js",
+              "node_modules/admin-lte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.js",
+              "node_modules/admin-lte/dist/js/adminlte.js"
+            
+     
+
+            ]
             
           },
           "configurations": {
@@ -60,11 +71,11 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "2mb"
+                  "maximumError": "10mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
+                  "maximumWarning": "10mb",
                   "maximumError": "4mb"
                 }
               ]

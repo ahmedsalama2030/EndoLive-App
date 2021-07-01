@@ -1,7 +1,7 @@
 import { DegreeService } from './../../../core/services/degree.service';
 import { DepartmentService } from './../../../core/services/department.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, HostListener, OnInit, TemplateRef, OnDestroy } from '@angular/core';
  import { PatientService } from 'src/app/core/services/patient.service';
 import { ActivatedRoute } from '@angular/router';
 import { Department } from 'src/app/core/models/Entities/Department';
@@ -15,6 +15,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { Location } from '@angular/common';
 import { LoadingBarService } from '@ngx-loading-bar/core';
 import { ToastrService } from 'ngx-toastr';
+import { AlertService } from 'src/app/core/services/alert.service';
  defineLocale('ar', arLocale);
  @Component({
   selector: 'eg-patient-operation',
@@ -22,7 +23,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./patient-operation.component.css'],
   animations:[fadeAnimation]
 })
-export class PatientOperationComponent implements OnInit {
+export class PatientOperationComponent implements OnInit ,OnDestroy{
   form !: FormGroup;  // form group
   massage: string = '';  //result massage
   deparments: Department[] = [];  //  Deparment array
@@ -45,11 +46,18 @@ export class PatientOperationComponent implements OnInit {
     private modalService: BsModalService,
     private departmentService: DepartmentService,
     private degreeService: DegreeService,
-    private localeService: BsLocaleService,
-    private spinner: NgxSpinnerService,
+     private spinner: NgxSpinnerService,
     private loadingBar: LoadingBarService,
-    private toastr: ToastrService  ) {  }
-
+    private alertService:AlertService,
+     ) {  }
+ 
+     @HostListener('window:beforeunload', ['$event'])
+     onWindowClose(event: any): void {
+    
+       event.preventDefault();
+       event.returnValue = true;
+   
+    }
   ngOnInit(): void {    // initail
     this.createForm();
     this.dateConfig()
@@ -78,8 +86,7 @@ export class PatientOperationComponent implements OnInit {
   }
   configInitailData(){   // set up resolve come
     this.routActive.data.subscribe(data => {
-      console.log(data);
-      this.deparments = data['data'].deparment;
+       this.deparments = data['data'].department;
       this.degrees = data['data'].degree;
       this.form.patchValue(data['data'].patient);
     });
@@ -90,18 +97,13 @@ export class PatientOperationComponent implements OnInit {
       isAnimated: true,
       dateInputFormat: 'YYYY-MM-DD' ,
       containerClass: 'theme-blue',startView: 'year'}
-      
-
-
-    
-  }
+      }
   onAdd() {      // om add Operation
-    this.spinner.show();
-    this.checkStatus = true;
+    this.openSpinner();
     this.patientService.register(this.form.value).pipe(delay(500)).subscribe(
-      () => { this.massage = 'successfully added'  },
-      () => { this.massage = 'faild added' },
-      () => { this.checkStatus = false;this.spinner.hide(); }
+      () => { this.alertService.success()},
+      (err) => { this.alertService.error(err); this.closeSpinner()  },
+      () => { this.closeSpinner() }
      );
   }
   onEdit() {   
@@ -109,32 +111,35 @@ export class PatientOperationComponent implements OnInit {
     this.checkStatus = true;
     this.spinner.show();
    this.patientService.edit(this.id?.value, this.form.value).pipe(delay(500)).subscribe(
-      () => { this.toastr.success('successfully','',{timeOut: 500,positionClass:'bottom-right'}); },
-      () => { this.massage = 'faild edit' },
-      () => { this.checkStatus = false; this.loadingBar.complete(); }
+      () => { this.alertService.success()  },
+      () => { this.alertService.error() ;this.closeSpinner()},
+      () => { this.closeSpinner()}
     );
   }
   onDelete() {  // on delete operation
     this.checkStatus = true;
     this.spinner.show();       
     this.patientService.delete(this.id?.value).pipe(delay(500)).subscribe(
-      () => { this.massage = 'successfully delete'; },
-      () => { this.massage = 'faild delete' },
-      () => { this.location.back() }
-    ); 
+      () => { this.alertService.success()  },
+      () => { this.alertService.error(),this.closeSpinner()  },
+      () => {  this.location.back() }
+     ); 
   }
   onPrint() {           // om print operation
-this.toastr.info('open in pro version')
+this.alertService.info('in next version')
   }
  saerchLabCode() {  // search lab code found
-    this.checkStatus = true;
-    this.massage = ''
+  
+  this.openSpinner() 
     this.patientService.IsLabCodeFound(this.labCode?.value).pipe(delay(500)).subscribe(
-      res => { if (res == true) this.massage = 'lab code found' },
-      () => { this.massage = 'lab code not found';this.checkStatus = false; },
-      () => {this.checkStatus = false; }
+      res => { 
+        if (res == true)
+         this.alertService.error('found')
+          },
+      () => { this.alertService.success('not found');this.closeSpinner() },
+      () => {this.closeSpinner() }
     ); 
-  }
+  } 
 // modeal function 
 onDepartment(template: TemplateRef<any>) {
   this.TypeDD = 'department';
@@ -170,6 +175,23 @@ saveDegree() {
     }
   );
 }
+
+openSpinner(){
+   
+  this.loadingBar.start();        // on edit operation
+    this.checkStatus = true;
+    this.spinner.show();
+}
+closeSpinner(){
+  this.checkStatus = false;
+  this.loadingBar.complete();
+
+  this.spinner.hide(); 
+
+}
+  ngOnDestroy(): void {
+    this.closeSpinner()
+     }
  /// form controll get
   get id() {         
     return this.form.get('id');

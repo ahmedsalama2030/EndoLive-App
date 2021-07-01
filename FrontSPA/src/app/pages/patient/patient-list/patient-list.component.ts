@@ -9,6 +9,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
 import { LoadingBarService } from '@ngx-loading-bar/core';
+import { AlertService } from 'src/app/core/services/alert.service';
 
 @Component({
   selector: 'eg-patient-list',
@@ -38,7 +39,7 @@ export class PatientListComponent implements OnInit, OnDestroy {
     private router: Router,
     private routerActive: ActivatedRoute,
     private modalService: BsModalService,
-    private toster: ToastrService,
+    private alertService:AlertService,
     private loadingBar: LoadingBarService,
   ) { }
   ngOnInit(): void {
@@ -46,26 +47,31 @@ export class PatientListComponent implements OnInit, OnDestroy {
       (res) => {
         this.patients = res['data'].result;
         this.pagination = res['data'].pagination!;
-      }, err => { this.toster.error('fail') }
+      }, err => { this.alertService.error() }
     );
     this.getFilterList();  // get filter list
   }
   getFilterList() {       // set filter type
     this.filterList = [
-      { name: 'name', value: 'name' },
-      { name: 'phone', value: 'phone' },
-      { name: 'Lab code', value: 'Labcode' },
-      { name: 'national id', value: 'nationalid' },
-      { name: 'department', value: 'department' },
-      { name: 'degree', value: 'degree' }
+      { name: 'name', value: 'name',searchTag:'patient' },
+      { name: 'phone', value: 'phone',searchTag:'patient' },
+      { name: 'lab code', value: 'Labcode',searchTag:'patient' },
+      { name: 'national id', value: 'nationalid',searchTag:'patient' },
+      { name: 'degree', value: 'degree',searchTag:'patient' },
+
+      { name: 'department', value: 'department',searchTag:'patient' },
     ];
   }
-  loadPatient() {           // lget patient from api      
+  loadPatient() {           // lget patient from api  
+    this.openSpinner();
+    
     this.patientService.getAll(this.pagination.currentPage, this.pagination.itemPerPage, this.pagination.filterType, this.pagination.filterValue).pipe(takeUntil(this.notifier)).subscribe(
       (res: PaginationResult<Patient[]>) => {
         this.patients = res.result;
         this.pagination = res.pagination!;
-      }
+      },
+      () => { this.alertService.error(),this.closeSpinner()  },
+      ()=>{this.closeSpinner()     }
     );
   }
   changeSearch(values: any) {   // change search value
@@ -113,14 +119,27 @@ export class PatientListComponent implements OnInit, OnDestroy {
     this.modalRef = this.modalService.show(this.template, this.modelConfig);
 
   }
+  OnColonoscopy( ) {   // action edit
+    this.router.navigate(['/colonoscopy/operation/' + this.patientSelected[0].id]);
+
+  }
   confirmDelete() {             // action delete confirm
-    this.loadingBar.start();
-    this.checkSave=true;
+    this.openSpinner();
     this.patientService.deleteRange(this.getSelectedList()).pipe(delay(500)).subscribe(
-      () => { this.loadPatient(); this.modalService.hide(); this.toster.success('success')},
-      () => { this.toster.error('fail') },
-      ()=>{this.loadingBar.complete(),this.loadingBar.stop(),    this.checkSave=false; }
+      () => { this.loadPatient(); this.modalService.hide(); this.alertService.success()},
+      () => { this.alertService.error(),this.closeSpinner },
+      ()=>{this.closeSpinner ()     }
     );
+  }
+
+  openSpinner(){
+    this.checkSave=true;
+    this.loadingBar.start();        // on edit operation
+    }
+  closeSpinner(){
+     this.loadingBar.complete();
+     this.loadingBar.stop();
+  
   }
 
   setupAction() {             // setuo one action or more or two

@@ -24,5 +24,6 @@ namespace Core.Dtos.ReportColonoscopy.ColonoscopyReport
         public string PatientName { get; set; }
         public string ConsultantName { get; set; }
         public string EndoscopistName { get; set; }
-    }
+
+     }
 }

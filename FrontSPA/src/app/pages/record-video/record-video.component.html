@@ -1,61 +1,52 @@
 <!-- Content Header (Page header) -->
-<div class="content-header"  >
+<div class="content-header text-capitalize"  >
     <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1 class="m-0 text-dark">Dashboard v2</h1>
+        <div class="row mb-2 title-section  ">
+            <div class="col-sm-6 d-none d-md-block">
+                <h6 class="m-0 text-dark" translate>record.record video</h6>
             </div><!-- /.col -->
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Dashboard v2</li>
-                </ol>
+            <div class="col-sm-6 ">
+                <ol class="breadcrumb float-sm-right   ">
+                    <li class="breadcrumb-item"><a href="#"translate>home.home</a></li>
+                    <li class="breadcrumb-item active p-0 "> <span class="mx-1" translate>record.record video</span></li>
+                </ol> 
             </div><!-- /.col -->
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
 </div>
 <!-- /.content-header -->
-<section class="content hg"    >
+<section class="content hg text-capitalize"    >
     <div class="container-fluid">
         <!-- Info boxes -->
         <div class="row " style="height: 100%;">
             <div class="col-12 col-md-12 col-lg-8  ">
                 <div class="card video-card">
                     <div class="card-header">
-                        <div class="row justify-content-between">
-
-                            <div class="col-12 col-md-5">
-                                <div class="row">
-                                    <div class="col">
-                                         <div class="text-bold text-capitalize"> patient name </div>
-                                        <div class="text-bold text-capitalize"> Patient Age </div>
-                                    </div>
-                                    <div class="col">
-                                        <div> ahmed salama ali</div>
-                                        <div> 3 y 5 m</div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="col-12 col-md-5">
-                                <div class="row  ">
-                                    <div class="col">
-                                        <div class="text-bold text-capitalize"> Patient codelab </div>
-                                        <div class="text-bold text-capitalize"> Patient degree </div>
-                                    </div>
-                                    <div class="col">
-                                        <div> 764679</div>
-                                        <div> مدنى تعاقد</div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="patient-info">
+                          <div class="patient-box">
+                            <span class="description"translate>record.name</span>
+                            <span class="patient">{{patient?.name}}</span>
+                          </div>
+                          <div class="patient-box">
+                            <span class="description"translate>record.age</span>
+                            <span class="patient">{{patientAge}}</span>
+                          </div>
+                          <div class="patient-box">
+                            <span class="description"translate>record.codelab</span>
+                            <span class="patient">{{patient?.labCode}}</span>
+                          </div>
+                          <div class="patient-box">
+                            <span class="description"translate>record.degree</span>
+                            <span class="patient">{{lang=='en'?patient?.degreeName:patient?.degreeNameAr}}</span>
+                          </div>
+                          
                         </div>
                     </div>
 
                     <!-- /.card-header -->
                     <div class="card-body p-0 ">
 
-                        <video    id="video_{{idx}}" class="video-js vjs-theme-fantasy" playsinline></video>
+                        <video    id="video_{{idx}}" class="video-js" playsinline></video>
 
                         <!-- /.users-list -->
                     </div>
@@ -64,44 +55,73 @@
                 </div>
             </div>
             <div class="col-12 col-md-12 col-lg-4   "  >
-               <div class="card">
+                
+               <div class="card" >
+                <div class="card-img-overlay" *ngIf="checkStatus"> </div> <!-- overlay card -->
+
                    <div class="card-header"  >
-                    <div class="text-bold text-capitalize">Video Setting</div>
+                    <div    class="text-center text-bold text-capitalize text-capitalize"translate>record.video setting</div>
                   </div>
                   <div class="card-body "  >
                     <div class="form-group">
-                         <div class="form-group">
-                            <label for="exampleInputPassword1">File Path</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Path">
-                          </div>
+                       <div class="input-group input-group">
+                                        <input #search InputTirmFilter   name="labCode" type="number"
+                                            class="form-control input-raduis">
+                                        <span class="input-group-append">
+                                            <button (click)="searchLabCode(search.value)" type="button"
+                                                class="btn btn-info btn-flat"><i class="fas fa-search"></i></button>
+                                        </span>
+                                    </div>
                       </div>
                       <div class="form-group">
-                        <label>Chose Device Input</label>
-                        <select class="form-control" >
+                        <label class="w-100" translate>record.choose device input</label>
+                        <select [disabled]="!readyRecord" class="form-control" >
                                  <option *ngFor="let device of devicesVideo" value="{{device.deviceId}}">{{device.label}}</option>
                         </select>
                       </div>
                   </div>
-                  <div class="card-footer"  >
-                    <button type="submit" class="btn btn-primary">save</button>
-                    <button type="submit" (click)="takePicture()" class="btn btn-primary">click</button>
-                    <button type="submit" (click)="xx()" class="btn btn-primary">download</button>
+                  <div class="card-footer "  >
+                      <div class="d-flex justify-content-around">
+                    <button (click)="uploadServer(search.value)" type="submit" class="btn btn-dark "><i class="fas fa-upload" aria-hidden="true"></i></button>
+                    <button type="submit" (click)="takePicture()" class="btn btn-dark"><i class="fa fa-camera" aria-hidden="true"></i>
+                    </button>
+                    <button type="submit" (click)="dowload()" class="btn btn-dark"><i class="fa fa-download" aria-hidden="true"></i>
+                    </button>
+                </div>
                   </div>
  
 
                </div>
+
+               
+               
             </div>
         </div>
         <div class="row images-capture  mb-5 px-2  " id="image-content">
             <div class="card card-image-capture">
-                <div class="card-header">
-                    <div class="text-bold text-capitalize">image capture </div>
-
-                </div>
-                <div class="body py-2">
+            <div class="card-header">
+                    <h6 class="text-capitalize d-inline-block " translate>record.image capture </h6>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                          <i class="fas fa-minus"></i>
+                        </button>
+                        
+                      </div>                </div>
+                <div class="body card-body p-0 py-2" *ngIf="images.length>0" style="display: block;">
                     <div class="container-img-capture" >
-                        <div   *ngFor="let item of images"><img  [src]=item /> </div>
-                          
+                        <div    *ngFor="let item of images;">
+ 
+                            <span  class="img-wrapper">
+                                <img  class="image-capture"  [src]="item.url" />
+                                
+                                <span id="close" (click)="removeImage(item.id)" class="close icon"> <i class="fas text-danger fa-1x fa-times-circle"></i></span>
+                                <a [href]="item.url" download id="download"  class="download icon"> <i class="fas text-primary fa-1x fa-download"></i></a>
+
+                            </span>
+                             
+                        
+                        </div>
+                           
                     </div>
                  </div>
             </div>

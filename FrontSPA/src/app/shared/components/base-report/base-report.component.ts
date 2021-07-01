@@ -13,5 +13,5 @@ export class BaseReportComponent implements OnInit {
  
   ngOnInit(): void {
   }
-
+ 
 }

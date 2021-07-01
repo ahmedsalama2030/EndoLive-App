@@ -61,13 +61,14 @@ namespace WebApi.Controllers.Reports.ColonoscopyReports
         [HttpPost("register")]
         public async Task<IActionResult> Register(ColonoscopyReportRegister ColonoscopyReportRegister)
         {
-            var ColonoscopyReport = _mapper.Map<ColonoscopyReport>(ColonoscopyReportRegister);
-            _colonoscopyReport.Table.Add(ColonoscopyReport);
+            var colonoscopyReport = _mapper.Map<ColonoscopyReport>(ColonoscopyReportRegister);
+            colonoscopyReport.CreatedDate=DateTime.Now;
+            _colonoscopyReport.Table.Add(colonoscopyReport);
             var result = await _colonoscopyReport.SaveAllAsync();
             if (result)
             {
-                ColonoscopyReport = await _colonoscopyReport.Table.FindBy(i => i.Id == ColonoscopyReport.Id, a => a.Patient, g => g.Patient.Degree, p => p.Patient.Department, d => d.Consultant, e => e.Endoscopist);
-                var ColonoscopyReportMap = _mapper.Map<ColonoscopyReportGet>(ColonoscopyReport);
+                colonoscopyReport = await _colonoscopyReport.Table.FindBy(i => i.Id == colonoscopyReport.Id, a => a.Patient, g => g.Patient.Degree, p => p.Patient.Department, d => d.Consultant, e => e.Endoscopist);
+                var ColonoscopyReportMap = _mapper.Map<ColonoscopyReportGet>(colonoscopyReport);
                 return CreatedAtRoute("getByIdColonoscopyReport", new { Controller = "api/ColonoscopyReports", id = ColonoscopyReportMap.Id }, ColonoscopyReportMap);
             }
             else
@@ -121,8 +122,7 @@ namespace WebApi.Controllers.Reports.ColonoscopyReports
                 case "patientName": ColonoscopyReports = _searchName.GetPatientName(ColonoscopyReports, paginationParam.filterValue); ; break;
                 case "consultantName": ColonoscopyReports = _searchName.GetConsultantName(ColonoscopyReports, paginationParam.filterValue); break;
                 case "EndoscopistName": ColonoscopyReports = _searchName.GetEndoscopistName(ColonoscopyReports, paginationParam.filterValue); break;
-
-            }
+             }
 
         }
 

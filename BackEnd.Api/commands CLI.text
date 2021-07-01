@@ -2,8 +2,8 @@
 2-dotnet new webapi -o  Infrastructure ||WebApi | Core
 3- dotnet sln backend.sln add WebApi\WebApi.cspro
 4-dotnet add WebApi/WebApi.csproj reference Infrastructure/Infrastructure.csproj
-5- dotnet ef --startup-project ../WebApi migrations remove  -c ApplicationDbContext
-6-dotnet ef --startup-project ../WebApi migrations database update -c ApplicationDbContext
-7-dotnet ef --startup-project ../WebApi migrations add name -c ApplicationDbContext
+5- dotnet ef --startup-project ../WebApi migrations remove  -c AppDbContext
+6-dotnet ef --startup-project ../WebApi   database update -c AppDbContext
+7-dotnet ef --startup-project ../WebApi migrations add init -c AppDbContext
 
 8-set ASPNETCORE_ENVIRONMENT=Production

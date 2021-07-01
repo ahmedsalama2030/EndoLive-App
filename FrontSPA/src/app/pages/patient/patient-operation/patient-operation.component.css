@@ -8,4 +8,6 @@ margin:0  .2rem;
   .header-operation{
       display: grid;
   } 
- 
+ .text-danger{
+     text-align: center;
+ }

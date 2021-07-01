@@ -14,6 +14,9 @@ using WebApi.helper.ExtensionsMethod;
 using WebApi.helper.pagination;
 using WebApi.Resources;
 using Microsoft.AspNetCore.Authorization;
+using Newtonsoft.Json;
+using Microsoft.AspNetCore.Hosting;
+
 namespace WebApi.Controllers
 {
     [ApiController]
@@ -24,13 +27,21 @@ namespace WebApi.Controllers
         private readonly IMapper _mapper;
         public IUnitOfWork<Patient> _Patient { get; set; }
         private readonly IStringLocalizer<Resource> _localizer;
+        private readonly IWebHostEnvironment _ihostingEnvironment;
         private readonly ISearchNameEntity<Patient> _SearchName;
-        public PatientsController(IUnitOfWork<Patient> Patient, IMapper mapper, IStringLocalizer<Resource> localizer, ISearchNameEntity<Patient> SearchNameEntity)
+        public PatientsController(
+            IUnitOfWork<Patient> Patient, 
+            IMapper mapper,
+             IStringLocalizer<Resource> localizer,
+             IWebHostEnvironment ihostingEnvironment,
+              ISearchNameEntity<Patient> SearchNameEntity)
         {
             _SearchName = SearchNameEntity;
             _localizer = localizer;
+            _ihostingEnvironment = ihostingEnvironment;
             _Patient = Patient;
             _mapper = mapper;
+            
         }
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery] PaginationParam paginationParam)
@@ -38,7 +49,7 @@ namespace WebApi.Controllers
             var Patients = _Patient.Table.GetQueryable(a => a.Department, d => d.Degree);
             if ((!string.IsNullOrEmpty(paginationParam.filterType)) && (!string.IsNullOrEmpty(paginationParam.filterValue)))
                 Search(paginationParam, ref Patients);
-                var c=Patients.ToList();
+                
 
             var PagedList = await PagedList<Patient>.CreateAsync(Patients, paginationParam.pageNumber, paginationParam.PageSize);
             var listPatients = _mapper.Map<IEnumerable<PatientGet>>(PagedList);
@@ -49,14 +60,14 @@ namespace WebApi.Controllers
         [HttpGet("{id}", Name = "getByIdPatient")]
         public async Task<IActionResult> GetById(Guid id)
         {
-            var Patient = HttpContext.Items["entity"] as Patient;
-            Patient = await _Patient.Table.FindBy(i => i.Id == Patient.Id, a => a.Department, d => d.Degree);
-            var PatientMap = _mapper.Map<PatientGet>(Patient);
-            return Ok(PatientMap);
+            var patient = HttpContext.Items["entity"] as Patient;
+            patient = await _Patient.Table.FindBy(i => i.Id == patient.Id, a => a.Department, d => d.Degree);
+            var patientMap = _mapper.Map<PatientGet>(patient);
+            return Ok(patientMap);
         }
 
-        [HttpGet("checklabcode/{labcode}", Name = "GetByLabCode")]
-        public async Task<IActionResult> GetByLabCode(string labcode)
+        [HttpGet("checklabcode/{labcode}", Name = "Checklabcode")]
+        public async Task<IActionResult> Checklabcode(string labcode)
         {
             var Patient = await _Patient.Table.FindBy(i => i.LabCode == labcode);
             if (Patient == null)
@@ -64,18 +75,48 @@ namespace WebApi.Controllers
              else 
              return Ok(true);
         }
+        [HttpGet("getByLabCode/{labcode}", Name = "GetByLabCode")]
+        public async Task<IActionResult> GetByLabCode(string labcode)
+        {
+           var patient = await _Patient.Table.FindBy(i => i.LabCode == labcode, a => a.Department, d => d.Degree);
+            if (patient == null)
+             return NotFound();
+             
+            var patientMap = _mapper.Map<PatientGet>(patient);
+            return Ok(patientMap);
+             
+        }
 
         [HttpPost("register")]
         public async Task<IActionResult> Register(PatientRegister PatientRegister)
         {
-            var Patient = _mapper.Map<Patient>(PatientRegister);
-            _Patient.Table.Add(Patient);
+            var patient = _mapper.Map<Patient>(PatientRegister);
+           var patientstatus=await _Patient.Table.FindBy(
+               a=>a.LabCode==patient.LabCode||a.NationalId==patient.NationalId);
+               if(patientstatus!=null)
+               return BadRequest(_localizer["notfound"].Value);
+
+            _Patient.Table.Add(patient);
             var result = await _Patient.SaveAllAsync();
             if (result)
-                return CreatedAtRoute("getByIdPatient", new { Controller = "api/Patients", id = Patient.Id }, Patient);
+                return CreatedAtRoute("getByIdPatient", new { Controller = "api/Patients", id = patient.Id }, patient);
             else
                 return BadRequest(_localizer["failregister"].Value);
         }
+        [HttpPost("uploadMedia/{labcode}")]
+        public async Task<IActionResult> uploadMedia(string labcode)
+        {
+            var patient = await _Patient.Table.FindBy(i => i.LabCode == labcode, a => a.Department, d => d.Degree);
+            if (patient == null)
+             return NotFound();
+            var formCollection = await Request.ReadFormAsync();
+            var file = formCollection.Files.First();
+            var url=await file.SaveImageOnDisk(_ihostingEnvironment,"ahmed");
+            if(!string.IsNullOrEmpty(url))
+            return BadRequest();
+             return Ok();
+        }
+
         [ServiceFilter(typeof(ValidateEntityExistsAttribute<Patient>))]
         [HttpPut("{id}")]
 

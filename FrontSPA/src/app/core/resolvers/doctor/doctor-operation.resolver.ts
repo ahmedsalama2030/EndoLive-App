@@ -9,6 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 import { forkJoin, Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
   import { DoctorService } from '../../services/doctor.service';
+import { AlertService } from '../../services/alert.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class DoctorOperationResolver implements Resolve<any> {
     private router:Router,
     private doctorService:DoctorService,
     private departmentService:DepartmentService,
-    private toster:ToastrService)
+    private toster:AlertService)
      { }
      resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):Observable<any> {
        var id=route.paramMap.get('id');
@@ -30,7 +31,7 @@ export class DoctorOperationResolver implements Resolve<any> {
             ,
             catchError(err=> 
               {
-               this.toster.error('fail')
+               this.toster.error()
                 this.router.navigate(['/patients']);
                 return of(null);} ))
        }
@@ -46,7 +47,7 @@ export class DoctorOperationResolver implements Resolve<any> {
                 };},
                catchError(err=> 
                  {
-                  this.toster.error('fail')
+                  this.toster.error()
                    this.router.navigate(['/doctors']);
                    return of(null);}
                  )
@@ -55,11 +56,5 @@ export class DoctorOperationResolver implements Resolve<any> {
 
         
        
-      return this.doctorService.getById(id).pipe(
-         catchError(error => {
-              this.router.navigate(['']);
-              this.toster.error('fail');
-             return of(null);
-         })  
-     )};
+       };
         }

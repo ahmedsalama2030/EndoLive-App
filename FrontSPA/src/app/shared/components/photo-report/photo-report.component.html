@@ -1,12 +1,10 @@
 <div id="accordion" class="mt-2">
     <ng-container *ngFor="let image of patientimage ;let index=index">
         <div class="card">
-            <div class="card-header" id="heading{{index}}">
+            <div class="card-header  p-1 px-4 text-center" id="heading{{index}}" data-toggle="collapse" [attr.data-target]="'#image'+index" aria-expanded="true"
+            [attr.aria-controls]="'image'+index">
                 <h5 class="mb-0">
-                    <button class="btn btn-link" data-toggle="collapse" [attr.data-target]="'#image'+index" aria-expanded="true"
-                    [attr.aria-controls]="'image'+index">
-                        date : {{image.date |date}}
-                    </button>
+                    date : {{image.date |date}}
                 </h5> 
             </div>
     
@@ -17,7 +15,7 @@
         <div>
             <img [src]=imagePatient.path class="rounded " alt="{{imagePatient.Date}}">
             <div class="selected ">
-                <input type="checkbox" [value]=imagePatient.selected>
+                <input type="checkbox" (change)="checkChange($event,imagePatient.path!,imagePatient.id)"  [value]=imagePatient.selected>
             </div>
 
         </div>

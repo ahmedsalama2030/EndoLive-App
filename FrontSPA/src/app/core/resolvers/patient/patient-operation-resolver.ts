@@ -1,3 +1,4 @@
+import { AlertService } from 'src/app/core/services/alert.service';
 import { ToastrService } from 'ngx-toastr';
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, Resolve, Router } from "@angular/router";
@@ -15,7 +16,7 @@ export class PatientOperationResolver implements Resolve<any> {
        private patientService: PatientService,
        private departmentService:DepartmentService,
        private degreeService:DegreeService,
-       private toster:ToastrService) { }
+       private toster:AlertService) { }
     resolve(route: ActivatedRouteSnapshot):Observable<any> {
         let id=route.paramMap.get('id')  ;
          if(id=='create' || id==null)
@@ -26,12 +27,12 @@ export class PatientOperationResolver implements Resolve<any> {
             ]).pipe(
                 map(result => {
                   return {
-                    deparment: result[0],
+                    department: result[0],
                      degree: result[1]
                    };},
                   catchError(err=> 
                     {
-                     this.toster.error('fail')
+                     this.toster.error()
                       this.router.navigate(['/patients']);
                       return of(null);}
                     )
@@ -51,7 +52,7 @@ export class PatientOperationResolver implements Resolve<any> {
               };},
               catchError(err=> 
                 {
-                 this.toster.error('fail')
+                 this.toster.error()
                   this.router.navigate(['/patients']);
                   return of(null);}
                 )              ));

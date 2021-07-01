@@ -1,24 +1,19 @@
-<!-- Content Header (Page header) -->
-<div class="content-header text-capitalize">
+<div class="content-header text-capitalize"  >
     <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1 class="m-0 text-dark" translate>general.create</h1>
-
+        <div class="row mb-2 title-section  ">
+            <div class="col-sm-6 d-none d-md-block">
+                <h6 class="m-0 text-dark" translate>patient.patients</h6>
             </div><!-- /.col -->
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a [routerLink]="['']" routerLinkActive="router-link-active"
-                            translate>general.home</a></li>
-                    <li class="breadcrumb-item"><a [routerLink]="['/patients']" routerLinkActive="router-link-active"
-                            translate>general.patients</a></li>
-                    <li class="breadcrumb-item active" translate>general.create</li>
-                </ol>
+            <div class="col-sm-6 ">
+                <ol class="breadcrumb float-sm-right   ">
+                     <li class="breadcrumb-item"><a [routerLink]="['/']"   translate  >home.home</a></li>
+                    <li class="breadcrumb-item active p-0 "> <a class="mx-1" translate [routerLink]="['/patients']">patient.patients</a></li>
+                </ol> 
             </div><!-- /.col -->
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
 </div>
- <section class="content text-capitalize">
+ <section class="content text-capitalize mb-5">
     <div class="container">
      <div class="card ">
             <div class="card-body py-0">
@@ -51,8 +46,7 @@
                                     <input formControlName="firstName" name="firstName" InputTirm Filter type="text"
                                         class="form-control">
                                     <div *ngIf="firstName?.touched && firstName?.invalid">
-                                        <div *ngIf="firstName?.hasError('required')" class="text-danger" translate>first
-                                            name required</div>
+                                        <div *ngIf="firstName?.hasError('required')" class="text-danger" translate>filed required</div>
                                    </div>
                                 </div>
                               </div>
@@ -63,7 +57,7 @@
                                         class="form-control">
                                     <div *ngIf="secondName?.touched && secondName?.invalid">
                                         <div *ngIf="secondName?.hasError('required')" class="text-danger" translate>
-                                            father name required</div>
+                                            filed required</div>
 
                                     </div>
                                 </div>
@@ -74,8 +68,7 @@
                                     <input formControlName="thirdName" name="thirdName" InputTirmFilter type="text"
                                         class="form-control">
                                     <div *ngIf="thirdName?.touched && thirdName?.invalid">
-                                        <div *ngIf="thirdName?.hasError('required')" class="text-danger" translate>third
-                                            name required</div>
+                                        <div *ngIf="thirdName?.hasError('required')" class="text-danger" translate>filed required</div>
 
                                     </div>
                                 </div>
@@ -87,8 +80,7 @@
                                     <input formControlName="lastName" name="lastName" InputTirmFilter type="text"
                                         class="form-control">
                                     <div *ngIf="lastName?.touched && lastName?.invalid">
-                                        <div *ngIf="lastName?.hasError('required')" class="text-danger" translate>last
-                                            name required</div>
+                                        <div *ngIf="lastName?.hasError('required')" class="text-danger" translate>filed required</div>
 
                                     </div>
                                 </div>
@@ -98,18 +90,17 @@
                                 <label class="col-sm-4 col-form-label" translate>patient.lab code</label>
                                 <div class="col-sm-8">
                                     <div class="input-group input-group">
-                                        <input InputTirmFilter formControlName="labCode" name="labCode" type="text"
-                                            class="form-control">
+                                        <input InputTirmFilter formControlName="labCode" name="labCode" type="number"
+                                            class="form-control  input-raduis">
                                         <span class="input-group-append">
                                             <button (click)="saerchLabCode()" type="button"
                                                 class="btn btn-info btn-flat"><i class="fas fa-search"></i></button>
                                         </span>
                                     </div>
                                     <div *ngIf="labCode?.touched && labCode?.invalid">
-                                        <div *ngIf="labCode?.hasError('required')" class="text-danger" translate>labCode
-                                            required</div>
+                                        <div *ngIf="labCode?.hasError('required')" class="text-danger" translate>filed required</div>
                                         <div *ngIf="labCode?.hasError('isLabCodefound')" class="text-danger" translate>
-                                            lab code found</div>
+                                            patent.lab code found</div>
 
                                     </div>
 
@@ -122,7 +113,7 @@
                                         class="form-control" bsDatepicker [bsConfig]="bsConfig" [maxDate]="maxDate">
                                     <div *ngIf="dateOfBirth?.touched && dateOfBirth?.invalid">
                                         <div *ngIf="dateOfBirth?.hasError('required')" class="text-danger" translate>
-                                            date of birth required</div>
+                                            filed required</div>
                                      </div>
                                   </div>
                             </div>
@@ -131,7 +122,7 @@
                                <div class="col-sm-8">
                                     <div class="input-group input-group">
                                         <select formControlName="degreeId" name="degreeId" id="inputState"
-                                            class="form-control">
+                                            class="form-control  input-raduis">
                                             <option *ngFor="let item of degrees" value="{{item.id}}"> {{item.name}}
                                             </option>
                                         </select>
@@ -143,7 +134,7 @@
 
                                     <div *ngIf="degreeId?.touched && degreeId?.invalid">
                                         <div *ngIf="degreeId?.hasError('required')" class="text-danger" translate>
-                                            degreeId required</div>
+                                            filed required</div>
                                     </div>
                                 </div>
                             </div>
@@ -152,7 +143,7 @@
                                <div class="col-sm-8">
                                     <div class="input-group input-group">
                                         <select formControlName="departmentId" name="departmentId" id="inputState"
-                                            class="form-control">
+                                            class="form-control ">
                                             <option *ngFor="let item of deparments" value="{{item.id}}"> {{item.name}}
                                             </option>
                                         </select> <span class="input-group-append">
@@ -162,7 +153,7 @@
                                     </div>
                                     <div *ngIf="departmentId?.touched && departmentId?.invalid">
                                         <div *ngIf="departmentId?.hasError('required')" class="text-danger" translate>
-                                            departmentId required</div>
+                                            filed required</div>
                                     </div>
                                 </div>
                             </div>
@@ -213,8 +204,7 @@
                                         class="form-control" />
 
                                     <div *ngIf="email?.touched && email?.invalid">
-                                        <div *ngIf="email?.hasError('email')" class="text-danger" translate>email
-                                            required</div>
+                                        <div *ngIf="email?.hasError('email')" class="text-danger" translate>filed required</div>
                                         </div>
                                 </div>
                             </div>

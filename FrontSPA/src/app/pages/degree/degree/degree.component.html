@@ -1,26 +1,23 @@
-<!-- Content Header (Page header) -->
-<div class="content-header">
-    <div class="container">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1 class="m-0 text-dark">{{ 'degrees'}}</h1>
-
+<div class="content-header text-capitalize"  >
+    <div class="container-fluid">
+        <div class="row mb-2 title-section  ">
+            <div class="col-sm-6 d-none d-md-block">
+                <h6 class="m-0 text-dark" translate>degree.degrees</h6>
             </div><!-- /.col -->
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a [routerLink]="['']" routerLinkActive="router-link-active">Home</a>
-                    </li>
-                    <li class="breadcrumb-item active">degrees</li>
-                </ol>
+            <div class="col-sm-6 ">
+                <ol class="breadcrumb float-sm-right   ">
+                     <li class="breadcrumb-item"><a [routerLink]="['/']"   translate  >home.home</a></li>
+                    <li class="breadcrumb-item active p-0 "> <a class="mx-1" translate [routerLink]="['/degrees']">degree.degrees</a></li>
+                </ol> 
             </div><!-- /.col -->
         </div><!-- /.row -->
-    </div><!-- /.container -->
-</div> 
-<!-- /.content-header -->
+    </div><!-- /.container-fluid -->
+</div>
 <section class="content hg">
     <div class="container">
         <!-- Info boxes -->
         <form #formOperation='ngForm'>
+            <div class="card-img-overlay" *ngIf="checkStatus"> </div> <!-- overlay card -->
 
             <eg-table [filterList]=filterList [moreAction]=moreAction [oneAction]=oneAction [Pagination]=pagination
                 (searchChange)="changeSearch($event)" (listLenghtChange)="changeLenghtSize($event)"
@@ -36,7 +33,7 @@
                                 <input (change)="checkedChangeAll()" type="checkbox" [checked]=checkAll>
                             </th>
                             <th class="text-capitalize" translate>general.name</th>
-                            <th translate>general.name Ar</th>
+                            <th translate>general.name ar</th>
                             <th translate>general.lastEdit</th>
                         </tr>
                     </thead>
@@ -53,14 +50,12 @@
 
                             <td>
                                 <input #nameinput="ngModel" InputTirmFilter class="form-control form-control-sm"
-                                    name="name" [(ngModel)]="form.name" type="text" spaceValidator required>  
-                                <div class="text-danger text-capitalize">
-                                    <p *ngIf="nameinput.errors?.textempty">not allow space</p>
-                                 </div>
+                                    name="name" [(ngModel)]="form.name" type="text" spaceValidator required />  
+                                
                             </td>
                             <td>
                                 <input InputTirmFilter class=" form-control form-control-sm" name="nameAr"
-                                    [(ngModel)]="form.nameAr" type="text">
+                                    [(ngModel)]="form.nameAr" type="text"/>
                             </td>
                             <td>
                                 <span (click)="closeform()" class="btn  btn-sm btn-danger "><i

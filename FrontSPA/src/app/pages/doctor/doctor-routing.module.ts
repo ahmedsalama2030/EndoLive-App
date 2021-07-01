@@ -5,8 +5,8 @@ import { DoctorOperationResolver } from 'src/app/core/resolvers/doctor/doctor-op
  import { DoctorListComponent } from './doctor-list/doctor-list.component';
 import { DoctorOperationComponent } from './doctor-operation/doctor-operation.component';
 const routes: Routes = [
-  {path:'',component:DoctorListComponent,resolve:{data:DoctorListResolver}},
-  {path:'operation/:id',component:DoctorOperationComponent,resolve:{data:DoctorOperationResolver}},
+  {path:'',component:DoctorListComponent,resolve:{data:DoctorListResolver}, data: { animation: 'Page' }},
+  {path:'operation/:id',component:DoctorOperationComponent,resolve:{data:DoctorOperationResolver}, data: { animation: 'Page' }},
     {path:'**',redirectTo:''}
 ];
 

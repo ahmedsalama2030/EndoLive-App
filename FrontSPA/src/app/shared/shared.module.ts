@@ -7,23 +7,24 @@ import { CommonModule } from '@angular/common';
   import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { ReportInfoComponent } from './components/report-info/report-info.component';
-import { PhotoReportComponent } from './components/photo-report/photo-report.component';
+ import { PhotoReportComponent } from './components/photo-report/photo-report.component';
 import { SpaceValidatorDirective } from './directives/validators/space-validator.directive';
+import { ReportInfoComponent } from './components/report-info/report-info.component';
    
   
 @NgModule({ 
   declarations: [ fromDirective.directives,fromPipes.pipes, components.components, ReportInfoComponent, PhotoReportComponent, SpaceValidatorDirective],
-  imports: [   
+  imports: [    
     CommonModule, 
     RouterModule,
     PaginationModule.forRoot(),
     FormsModule,
     TranslateModule,
      
-   
+    
   ],
   exports: [fromDirective.directives,fromPipes.pipes, components.components]
 
 })
 export class SharedModule { }
+ 

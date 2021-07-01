@@ -1,1 +1,73 @@
-<p>colonoscopy-list works!</p>
+<div class="content-header text-capitalize"  >
+    <div class="container-fluid">
+        <div class="row mb-2 title-section  ">
+            <div class="col-sm-6 d-none d-md-block">
+                <h6 class="m-0 text-dark" translate>navs.colonoscopy</h6>
+            </div><!-- /.col -->
+            <div class="col-sm-6 ">
+                <ol class="breadcrumb float-sm-right   ">
+                     <li class="breadcrumb-item"><a [routerLink]="['/']"   translate  >home.home</a></li>
+                 </ol> 
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+
+  <!-- /.content-header -->
+<section class="content hg text-center">
+    <div class="container">
+      <!-- Info boxes -->
+      <eg-table 
+      [filterList]=filterList 
+      [moreAction]=moreAction  
+      [oneAction]=oneAction 
+      [Pagination]=pagination 
+      (searchChange)="changeSearch($event)" 
+      (listLenghtChange)="changeLenghtSize($event)"
+      (PageChanged)="PageChanged($event)"
+      (OnCreate)=OnCreate($event) 
+      (onDelete)=onDelete($event)
+      (OnEdit)=OnEdit($event)>
+     
+        <ng-container class="body">  <!--  body  start -->
+          <thead class="text-center table-header text-capitalize">
+            <tr>
+              <th scope="col">
+                <input (change)="checkedChangeAll()" type="checkbox" [checked]=checkAll>
+              </th>
+              <th class="text-capitalize" translate>colonoscopy.patient name</th>
+              <th translate>colonoscopy.degree</th>
+              <th translate>colonoscopy.department</th>
+              <th translate>colonoscopy.consultant name</th>
+            </tr> 
+          </thead>
+          <tbody class="text-center">
+            <tr *ngFor="let item of colonoscopies">
+              <td><input type="checkbox" class="p-2" (change)="checkChange(item.id,$event)" [checked]=item.selected></td>
+              <td>{{item.patientName}}</td>
+               
+              <td>{{item.patientDegreeName}}</td>
+              <td>{{item.patientDegreeNameAr}}</td>
+              <td>{{item.consultantName}}</td>
+               </tr>
+          </tbody>
+        </ng-container> <!--  ./body -->
+     </eg-table>
+   </div>
+  </section>
+  
+  <!-- template modal start -->
+  <ng-template #template> 
+    <div class="modal-header bg-dark justify-content-center text-capitalize">
+      <h4 class="modal-title  "translate>general.delete</h4>
+      
+    </div>
+    <div class="modal-body text-capitalize text-center font-weight-bold ">
+      <p translate>general.are you sure delete this records</p>
+    </div>
+    <div class="modal-footer text-capitalize">
+      <button class="btn btn-danger btn-md disable" [ngClass]="{'disable': checkSave}" (click)="confirmDelete()"translate>general.save</button> 
+     </div>
+  </ng-template>
+  <!-- template modal end -->
+   

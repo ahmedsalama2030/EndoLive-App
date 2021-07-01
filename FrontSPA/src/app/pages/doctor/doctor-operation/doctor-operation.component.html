@@ -1,24 +1,19 @@
-<!-- Content Header (Page header) -->
-<div class="content-header text-capitalize">
+<div class="content-header text-capitalize"  >
     <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1 class="m-0 text-dark" translate>general.create</h1>
-
+        <div class="row mb-2 title-section  ">
+            <div class="col-sm-6 d-none d-md-block">
+                <h6 class="m-0 text-dark" translate>doctor.doctors</h6>
             </div><!-- /.col -->
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a [routerLink]="['']" routerLinkActive="router-link-active"
-                            translate>general.home</a></li>
-                    <li class="breadcrumb-item"><a [routerLink]="['/doctors']" routerLinkActive="router-link-active"
-                            translate>general.doctors</a></li>
-                    <li class="breadcrumb-item active" translate>general.create</li>
-                </ol>
+            <div class="col-sm-6 ">
+                <ol class="breadcrumb float-sm-right   ">
+                     <li class="breadcrumb-item"><a [routerLink]="['/']"   translate  >home.home</a></li>
+                    <li class="breadcrumb-item active p-0 "> <a class="mx-1" translate [routerLink]="['/patients']">doctor.doctors</a></li>
+                </ol> 
             </div><!-- /.col -->
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
 </div>
- <section class="content text-capitalize">
+ <section class="content text-capitalize mb-5">
     <div class="container">
      <div class="card ">
             <div class="card-body py-0">
@@ -98,7 +93,7 @@
                                <div class="col-sm-8">
                                     <div class="input-group input-group">
                                         <select formControlName="departmentId" name="departmentId" id="inputState"
-                                            class="form-control">
+                                            class="form-control input-raduis">
                                             <option *ngFor="let item of departments" value="{{item.id}}"> {{item.name}}
                                             </option>
                                         </select> <span class="input-group-append">
@@ -116,9 +111,9 @@
                             
                            
                             <div class="form-group row important-filed">
-                                <label class="col-sm-4 col-form-label" translate>patient.report description </label>
+                                <label class="col-sm-4 col-form-label" translate>doctor.report description </label>
                                 <div class="col-sm-8">
-                                    <ngx-editor-menu [hidden]='false' [editor]="editor"> </ngx-editor-menu>
+                                    <ngx-editor-menu [hidden]='false' [toolbar]="toolbar" [editor]="editor"> </ngx-editor-menu>
                                     <ngx-editor [editor]="editor" formControlName="reportDescription"></ngx-editor>
                                 
                                      <div *ngIf="reportDescription?.touched && reportDescription?.invalid">
@@ -146,7 +141,7 @@
                                 </div>
                             </div>
                             <div class="form-group row important-filed">
-                                <label class="col-sm-4 col-form-label" translate>docto.show report</label>
+                                <label class="col-sm-4 col-form-label" translate>doctor.show report</label>
                                 <div class="col-sm-8">
                                     <input formControlName="isShowReportMenu" name="isShowReportMenu" InputTirmFilter type="checkbox"
                                         class="form-control">

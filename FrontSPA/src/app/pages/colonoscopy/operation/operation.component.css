@@ -1,5 +1,20 @@
-.base {}
+ .report{
+    transform: scale(0.6) translate(0, -31%);
+    height: 80vh;
+}
 
+.report::-webkit-scrollbar {
+    
+    width: 0px !important;
+    height: 0px !important;
+   }
+ 
+@media (max-width:576px) {
+    .report{
+         overflow-y: scroll;
+        transform: scale(0.9) translate(0, 0);
+     } 
+}
 .report-info table {
     width: 90%;
     margin: auto;
@@ -10,18 +25,18 @@
     background-color: var(--light);
 }
 
-.body-parameter .parameter h3 {
+.body-parameter .parameter .head {
     font-weight: bold;
     text-transform: capitalize;
     position: relative;
     color: #000;
 }
 
-.body-parameter div.parameter:not(:last-of-type) h3:before {
+.body-parameter div.parameter:not(:last-of-type) .head:before {
     content: '';
     position: absolute;
     width: 10%;
-    height: 4px;
+    height: 2px;
     background-color: var(--gray);
     top: 100%;
     left: 0;
@@ -37,23 +52,23 @@
     color: #000;
 }
 .body-parameter .parameter div{
-    min-height: 10rem;
+    min-height: 6rem;
 
 }
 .fr-second-toolbar {
     display: none !important;
 }
 
-#report-operation .form-group h3 {
+#report-operation .form-group .head {
     position: relative;
     margin: 1rem 0;
 }
 
-#report-operation .form-group h3:before {
+#report-operation .form-group .head:before {
     content: '';
     position: absolute;
     width: 10%;
-    height: 4px;
+    height: 2px;
     background-color: var(--gray);
     top: 100%;
     left: 0;
@@ -65,4 +80,36 @@ max-width:80%;
 #report-info .table thead{
     background-color: var(--light);
 } 
- 
+  
+
+/* main */
+.main{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 0;
+   }
+   @media (max-width:576px){
+    .main{
+        grid-template-columns: repeat(1,1fr);
+        grid-template-rows: repeat(3,1fr);
+    
+
+    }
+    
+
+   }
+   .main input{
+       border:1px solid #eeee;
+        outline: none;
+       width: 100%;
+        text-align: center;
+   }
+   .main div div:last-of-type {  
+text-align: center;
+   }
+
+  .main div div:first-of-type:not(:last-of-type){  
+background-color: var(--dark);
+color: #fff;
+text-align: center;
+  }

@@ -11,6 +11,7 @@ export class ReportParamenterOperationComponent implements OnInit {
   @Input() endoscopist!:Doctor[];
   @Output() onconsolutant= new EventEmitter<Doctor>();
   @Output() onendoscopist= new EventEmitter<Doctor>();
+  @Output() onSubmit= new EventEmitter<boolean>();
   
   constructor() { }
 
@@ -31,5 +32,9 @@ if(id!=''){
     this.onconsolutant.emit(doctor);
     
     }
+  }
+
+  onSubmitForm(){
+this.onSubmit.emit(true);
   }
 }

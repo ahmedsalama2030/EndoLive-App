@@ -1,17 +1,18 @@
 <div class="card">
-    <div class="card-header">
-ee
+    <div class="card-header d-flex  justify-content-around align-items-center bg-dark">
+ <h5 class="   ">edit report</h5>
+ <div (click)="onSubmitForm()" class="btn btn-sm btn-primary"><i class="fa fa-save" aria-hidden="true"></i></div>
     </div>
     <div class="card-body">
-        <ul class="nav nav-tabs nav-pills nav-fill" id="myTab" role="tablist">
+        <ul class="nav nav-tabs  " id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
-              <a class="nav-link active" id="parameter-tab" data-toggle="tab" href="#parameter" role="tab" aria-controls="home" aria-selected="true">ccolonscopy</a>
+              <a class="nav-link active" id="parameter-tab" data-toggle="tab" href="#parameter" role="tab" aria-controls="home" aria-selected="true">report</a>
             </li>
             <li class="nav-item" role="presentation">
               <a class="nav-link" id="media-tab" data-toggle="tab" href="#media" role="tab" aria-controls="parameter" aria-selected="false">photo store</a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" id="mideanew-tab" data-toggle="tab" href="#mideanew" role="tab" aria-controls="mideanew" aria-selected="false">upload new photo</a>
+                <a class="nav-link" id="mideanew-tab" data-toggle="tab" href="#mideanew" role="tab" aria-controls="mideanew" aria-selected="false">upload new </a>
               </li>
           </ul>
           <div class="tab-content" id="myTabContent">
@@ -21,18 +22,19 @@ ee
                
                   <div class="form-group">
                     <label for="consolutant"> consolutant</label>
-                    <select  (change)="selectConsolutant($event)"  *ngFor="let doctor of consolutant" class="form-control w-50">
-                        <option> </option>
+                    
+                    <select  (change)="selectConsolutant($event)"   class="form-control w-75">
+                      <option></option>
 
-                        <option value={{doctor.id}} >{{doctor.name}}</option>
+                         <option *ngFor="let doctor of consolutant"  value={{doctor.id}} >{{doctor.name}}</option>
                         
                       </select>                
                   </div>
                   <div class="form-group">
                     <label for="consolutant"> endoscopist</label>
-                    <select (change)="selectEndoscopist($event)" *ngFor="let doctor of endoscopist" class="form-control w-50">
-                        <option> </option>
-                        <option value={{doctor.id}} >{{doctor.name}}</option>
+                    <select (change)="selectEndoscopist($event)" class="form-control w-75">
+                      <option></option>
+                         <option  *ngFor="let doctor of endoscopist" value={{doctor.id}} >{{doctor.name}}</option>
                          
                       </select>     
                   </div>
@@ -41,13 +43,20 @@ ee
             <div class="tab-pane fade" id="media" role="tabpanel" aria-labelledby="media-tab">
 
                  <ng-content select=".patientimage"></ng-content>
+                 </div>
                  
-             <div class="tab-pane fade" id="mideanew" role="tabpanel" aria-labelledby="mideanew-tab">wergtewrgtwre</div>
+             <div class="tab-pane fade" id="mideanew" role="tabpanel" aria-labelledby="mideanew-tab"> 
+
+              <label id="upload-icon   "  for="upload-images">
+                <i class="text-primary fas fa-cloud-upload-alt  fa-2x" aria-hidden="true"></i></label>
+                <input class="d-none" id="upload-images" type="file">
+
+             </div>
            </div>
           
         </div>
-        <div class="card-footer">
-        ee
+        
+         
     </div>  
-</div>
+ 
   

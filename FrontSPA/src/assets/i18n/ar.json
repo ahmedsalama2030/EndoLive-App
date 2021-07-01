@@ -1,21 +1,22 @@
 {
-    "general":{
-        "create":"تسجيل",
-        "home":"الرئيسية",
-        "patients":"المرضى",
-        "delete":"حذف",
-        "are you sure delete this records":"هل انت منأكد من الحذف",
-        "save":"حفظ",
-        "name ar":"الاسم بالعربى",
-        "name":"الأسم",
-        "add":"أضافة" 
-
-     },
+    "general": {
+        "create": "تسجيل",
+        "home": "الرئيسية",
+        "patients": "المرضى",
+        "delete": "حذف",
+        "are you sure delete this records": "هل انت منأكد من الحذف",
+        "save": "حفظ",
+        "name ar": "الاسم بالعربى",
+        "name": "الأسم",
+        "add": "أضافة",
+        "not allow space": "غير مسموح بالمسافة الفارغة",
+        "in version 3": "فى الأصدار الثالث"
+    },
     "home": {
         "home": "الرئيسية",
         "patients": "المرضى",
         "new": "جديد",
-        "calender": "المدونة",
+        "calender": "التوقيت",
         "logout": "تسجيل الخروج"
     },
     "table": {
@@ -31,7 +32,6 @@
         "to": "إلى",
         "of": "من",
         "no records": "لا يوجد سجلات"
-
     },
     "patient": {
         "name": "الأسم",
@@ -45,24 +45,90 @@
         "third name": "الأسم الثالث",
         "last name": " الأسم الرابع",
         "date of birth": "تأريخ الميلاد",
-         "national id": "الرقم القومى",
-         "city": "المدينة",
-         "state": "المحافظه",
+        "national id": "الرقم القومى",
+        "city": "المدينة",
+        "state": "المحافظه",
         "street": "الشارع",
-        "email": "الإيميل"
+        "email": "الإيميل",
+        "patients": "المرضى ",
+        "lab code found": "رقم الحاسب موجود"
     },
     "navs": {
         "record video": "تسجيل فيديو ",
-        "doctor": "الأطباء",
+        "doctors": "الأطباء",
         "witing list": "قوأئم الأنتظار",
         "reports": "التقارير",
-        "ercp": "منظار ال ercp ",
-        "cononscopy": "cononscopy منظار",
-        "ugi": "ugi منظار",
-        "flexiable": "flexiable منظار"
+        "ercp": "تنظير الغدد الصماء ",
+        "colonoscopy": " تنظير المعدة ",
+        "ugi": "تنظير الجهار الهضملى",
+        "flexiable": " تنظير منظار المرى",
+        "departments": "الأقسام",
+        "degrees": "الفئات",
+        "patients": "المرضى",
+        "finance":"الماليات"
+
+    },
+    "record": {
+        "record video": "تسجيل الفيديو",
+        "name": "الأسم",
+        "age": "العمر",
+        "degree": "الفئة",
+        "codelab": "رقم الحاسب",
+        "video setting": "إعدادات الفيديو",
+        "file path": "مسار الحفظ",
+        "choose device input": "أختر جهاز التسجيل",
+        "image capture": "الصور الملتقطة"
+    },
+    "dept": {
+        "departments": "الأقسام",
+        "name": "الإسم",
+        "name ar": "الأسم بالعربية",
+        "lastEdit": "إخر تعديل"
+    },
+    "degree": {
+        "degrees": "الفئات",
+        "name": "الأسم",
+        "name ar": "الأسم بالعريى"
+    },
+    "doctor": {
+        "doctors": "الأطباء",
+        "university name": "إسم الجامعة",
+        "show report": "إظهار فى التقرير",
+        "is consultant": " إستشارى ؟",
+        "report description": "الوصف فى التقرير",
+        "university": "الجامعة",
+        "is Show Report": "إظهار التقرير",
+        "phone": "التليفون",
+        "name": "الأسم",
+        "department": "القسم"
+    },
+    "colonoscopy":{
+        "colonoscopy":"تنظير المعدة ",
+        "patient name":"أسم المريض",
+        "degree":"الفئة",
+        "department":"القسم",
+        "consultant name":"أسم الأستشارى",
+        "dateOfReport":"تاريخ التقرير",
+"EndoscopistName":"اسم الطبيب"
     },
     "footer": {
         "copyright": "لنسخة © 2020-2021",
         "reserved": "كل الحقوق محفوظة"
-    }
+    },
+    "filed required": "هذأ الحقل مطلوب",
+    "found": "موجود",
+    "not found": "غير موجود",
+    "sucess process": "تم بنجاح",
+    "fail process": "فشلت العملية",
+    "in next version": "فى الإصدار  المدفوع",
+    "name require": "مطلوب الأسم",
+    "start record first": "أبدا التسجيل أولا",
+    "error in recording": "خطأ فى التسجيل",
+    "labcode not found": "كود الحاسب غير موجود",
+    "video no finished": "أوقف الفيديو أولا",
+    "this page contain data unsave sure to move": "هذة الصفحة تحتوى على بيانات غير محفوظة  متأكد من الحركة",
+    "error may failds required": "خطأ ربما حقول مطلوبة",
+    "search": "بحث",
+        "pro":"م"
+    
 }

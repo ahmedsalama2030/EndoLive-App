@@ -15,8 +15,103 @@
  }
  .container-img-capture{
      display: grid;
-     grid-template-columns: repeat(6,1fr);
-     gap:10px 10px;
-      
+     grid-template-columns: repeat(1,1fr);
+    gap:5px 5px;
+   }
+ @media (max-width:576px) {
+  .container-img-capture{
+   
+    grid-template-columns: repeat(1,1fr);
+    gap:5px 5px;
+     
+}
+ }
+@media (min-width:767px) {
+  .container-img-capture{
+    grid-template-columns: repeat(3,1fr);
+    gap:7px;
+     
+}
+ }
+ @media (min-width:991px) {
+  .container-img-capture{
+    grid-template-columns: repeat(6,1fr);
+    gap:10px;
+     
+}
  }
  
+ 
+ /* patient info */
+ .patient-info{
+     display: grid;
+     grid-template-columns: auto auto;
+     grid-template-rows: auto auto;
+     gap: 10px 10px;
+     justify-content: space-between;
+     text-transform: capitalize;
+  }
+  @media (max-width:567px){
+    .patient-info{
+        display: grid;
+        grid-template-columns: auto ;
+        grid-template-rows: auto auto auto auto;
+        gap: 5px 5px;
+     }   
+  }
+  .description{
+    min-width: 6rem;
+    display: inline-block;
+    font-weight: bold;
+  }
+
+  .patient{
+    min-width: 6rem;
+ text-align: center;
+  }
+ /* images capture */
+ .img-wrapper{
+     position: relative;
+     display: inline-block;
+ }
+ .img-wrapper:hover  .icon{
+display: block;
+ }
+ .close,.download{
+     position: absolute;
+     display: inline-block;
+      cursor: pointer;
+     display: none;
+    transition: display .5s ease-in-out;
+    margin:   .5rem;
+    opacity: 1;
+  } 
+   .close{ 
+          top: 0;
+          left: 0;
+
+  } 
+.download{
+  top: 0;
+  right: 0;
+ 
+}
+
+  .close, .mailbox-attachment-close{
+text-shadow: 0 0 0 transparent !important;
+  }
+
+  /* input-wapper */
+  .input-wapper{
+    position: relative;
+  }
+  .input-wapper input{ 
+outline: 0 !important;
+  }
+  .input-wapper .search-button{
+    position: absolute;
+    top:0;
+    right:0;
+    z-index: 1000;
+
+  }

@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
  import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Doctor } from '../models/Entities/Doctor';
@@ -40,6 +40,9 @@ export class DoctorService {
       })
     );
     
+    }
+    getAllDoctors():Observable<Doctor[]>{
+      return this.http.get<Doctor[]>(this.baseUrl+'getAllDoctors');
     }
     getById(id:any):Observable<Doctor>{
       return this.http.get<Doctor>(this.baseUrl+id);

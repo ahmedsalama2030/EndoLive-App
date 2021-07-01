@@ -44,6 +44,9 @@ export class PatientService {
   getById(id: any) {
     return this.http.get(this.baseUrl + id);
   }
+  getByCode(code: any):Observable<Patient>{
+    return this.http.get<Patient>(this.baseUrl+"getByLabCode/" + code);
+  }
   register(model: any): Observable<Patient> {
     return this.http.post<Patient>(this.baseUrl + 'register', model);
   }
@@ -56,4 +59,12 @@ export class PatientService {
   edit(id: any, model: any): Observable<Patient> {
     return this.http.put<Patient>(this.baseUrl + id, model);
   }
+
+  uploadMedia(code:string,file:any){
+    console.log(file)
+    return this.http.post<Patient>(this.baseUrl+"uploadMedia/"+code,file,
+    {reportProgress: true, observe: 'events'}
+   );
+  }
 }
+ 

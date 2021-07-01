@@ -14,6 +14,7 @@ using WebApi.helper.pagination;
 using WebApi.Resources;
 using Microsoft.AspNetCore.Authorization;
 using Core.Services;
+using System.Collections;
 
 namespace WebApi.Controllers
 {
@@ -55,6 +56,14 @@ namespace WebApi.Controllers
             var Doctor = HttpContext.Items["entity"] as Doctor;
             Doctor=await _Doctor.Table.FindBy(i=>i.Id==Doctor.Id,a=>a.Department);
             var doctorMap = _mapper.Map<DoctorList>(Doctor);
+            return Ok(doctorMap);
+        }
+
+        [HttpGet("getAllDoctors" ,Name = "getAllDoctors")]
+        public async Task<IActionResult> getAllDoctors()
+        {
+            var  doctor=await _Doctor.Table.GetAllAsync(a=>a.IsShowReportMenu==true );
+            var doctorMap = _mapper.Map<IEnumerable <DoctorList>>(doctor);
             return Ok(doctorMap);
         }
 

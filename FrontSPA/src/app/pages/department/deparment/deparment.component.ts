@@ -10,6 +10,7 @@ import { Subject } from 'rxjs';
 import { LoadingBarService } from '@ngx-loading-bar/core';
  import { DepartmentService } from 'src/app/core/services/department.service';
 import { GeneralValidationService } from 'src/app/core/services/validators/general-validation.service';
+import { AlertService } from 'src/app/core/services/alert.service';
  
 @Component({
   selector: 'deparment',
@@ -43,7 +44,7 @@ export class DeparmentComponent implements OnInit, OnDestroy {
     private router: Router,
     private routerActive: ActivatedRoute,
     private modalService: BsModalService,
-    private toster: ToastrService,
+    private alertService:AlertService,
     private loadingBar: LoadingBarService,
    ) { }
    
@@ -52,38 +53,39 @@ export class DeparmentComponent implements OnInit, OnDestroy {
       (res) => {
         this.departments = res['data'].result;
         this.pagination = res['data'].pagination!;
-        console.log(res);
-      }, err => { this.toster.error('fail') }
+       }, err => { this.alertService.error() }
     );
     this.getFilterList();  // get filter list
   }
   getFilterList() {       // set filter type
     this.filterList = [
-      { name: 'name', value: 'name' },
-      { name: 'nameAr', value: 'name Ar' },
-    
+      { name: 'name', value: 'name',searchTag:'degree' },
+      { name: 'name ar', value: 'name Ar' ,searchTag:'degree'},
     ];
   }  
-  loadData() {           // lget Department from api      
+  loadData() {     
+            console.log('start');
+      // lget Department from api      
     this.departmentService.get(this.pagination.currentPage, this.pagination.itemPerPage, this.pagination.filterType, this.pagination.filterValue).pipe(takeUntil(this.notifier)).subscribe(
       (res: PaginationResult<Department[]>) => {
         console.log(res);
-        this.departments = res.result;
+         this.departments = res.result;
         this.pagination = res.pagination!;
       }
     );
-  }
+  } 
   changeSearch(values: any) {   // change search value
     this.pagination.filterType = values.filterType;
     this.pagination.filterValue = values.filterValue;
     this.loadData();
   }
   changeLenghtSize(event: any) {  // change length page size
+ 
     this.pagination.itemPerPage = event;
     this.loadData();
   }
   PageChanged(event: any) {     // pagination change
-    this.pagination.currentPage = event.page;
+     this.pagination.currentPage = event.page;
     this.loadData();
 
   }
@@ -115,30 +117,30 @@ export class DeparmentComponent implements OnInit, OnDestroy {
   }
   createdDepartment(){
     if(this.form.name==''||null){
- this.toster.error('name require')
+ this.alertService.error('name require')
     }else{
     this.loadingBar.start();
     this.departmentService.register(this.form).pipe(delay(500)).subscribe(
       (res)=>{
         this.addStatus=false; 
         this.departments?.push(res);
-        this.toster.success('success')},
-      ()=>{this.loderClose(),this.toster.error('error')},
+        this.alertService.success()},
+      ()=>{this.loderClose(),this.alertService.error()},
       ()=>{this.loderClose()}
     )
   }
   }
   editDepartment(){
     if(this.form.name==''||null){
-      this.toster.error('name require')
+      this.alertService.error('name require')
          }else{
         this.loadingBar.start();
         this.departmentService.edit(this.form.id,this.form).pipe(delay(500)).subscribe(
           ()=>{
             this.editStatus=false; 
            this.editStatus; 
-            this.toster.success('success')},
-          ()=>{this.loderClose();this.toster.error('error')},
+            this.alertService.success()},
+          ()=>{this.loderClose();this.alertService.error( )},
           ()=>{this.loderClose()}
         )
           }
@@ -162,9 +164,9 @@ export class DeparmentComponent implements OnInit, OnDestroy {
     this.loadingBar.start();
     this.checkSave=true;
     this.departmentService.deleteRange(this.getSelectedList()).pipe(delay(500)).subscribe(
-      () => { this.loadData(); this.modalService.hide(); this.toster.success('success')},
-      () => { this.toster.error('fail') },
-      ()=>{this.loadingBar.complete(),this.loadingBar.stop(),    this.checkSave=false; }
+      () => { this.loadData(); this.modalService.hide(); this.alertService.success()},
+      () => { this.alertService.error() },
+      ()=>{this.loderClose(),    this.checkSave=false; }
     );
   }
 

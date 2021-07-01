@@ -10,9 +10,17 @@ export interface Colonoscopy {
     colonoscopy :string;
     conclusion   :string;                                        
     patientId :string;
-    consultantId :string;
+    ConsultantId :string;
     endoscopistId :string;
-                                                    
+    selected?: boolean;
+    patientDegreeName :string;
+    patientName:string;
+    patientDegreeNameAr :string;
+    patientDepartmentName:string;
+    consultantName  :string;
+ 
+           
+                                                
                                      
                                                                   
                                                               

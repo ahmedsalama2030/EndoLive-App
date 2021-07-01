@@ -1,18 +1,15 @@
-<!-- Content Header (Page header) -->
-<div class="content-header">
+<div class="content-header text-capitalize"  >
   <div class="container-fluid">
-    <div class="row mb-2">
-      <div class="col-sm-6">
-        <h1 class="m-0 text-dark">{{ 'Patients' | translate }}</h1>
-
-      </div><!-- /.col -->
-      <div class="col-sm-6">
-        <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a [routerLink]="['']" routerLinkActive="router-link-active">Home</a></li>
-          <li class="breadcrumb-item active">Patients</li>
-        </ol>
-      </div><!-- /.col -->
-    </div><!-- /.row -->
+      <div class="row mb-2 title-section  ">
+          <div class="col-sm-6 d-none d-md-block">
+              <h6 class="m-0 text-dark" translate>patient.patients</h6>
+          </div><!-- /.col -->
+          <div class="col-sm-6 ">
+              <ol class="breadcrumb float-sm-right   ">
+                  <li class="breadcrumb-item"><a href="#"translate>home.home</a></li>
+               </ol> 
+          </div><!-- /.col -->
+      </div><!-- /.row -->
   </div><!-- /.container-fluid -->
 </div>
 <!-- /.content-header -->
@@ -32,12 +29,15 @@
     (OnEdit)=OnEdit($event)>
    <ng-container class="moreaction"> <!-- moreaction -->
         <div class="btn-group"  >
-          <button type="button" class=" btn btn-outline-primary text-capitalize dropdown-toggle mx-2 btn-link"
+          <button [disabled]="!oneAction" type="button" class=" btn btn-outline-primary text-capitalize dropdown-toggle mx-2 btn-link"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-ellipsis-v"></i>
           </button>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" [routerLink]="['']">ercp</a>
+          <div class="dropdown-menu text-capitalize">
+            <span class="dropdown-item"  (click)="OnColonoscopy()">colonoscopy</span>
+            <span class="dropdown-item"  >UGI</span>
+            <span class="dropdown-item"  >flexiable</span>
+            <span class="dropdown-item"  >ercp</span>
 
           </div>
         </div>

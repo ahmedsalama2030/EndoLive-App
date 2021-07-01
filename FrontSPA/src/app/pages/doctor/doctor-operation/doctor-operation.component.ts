@@ -2,7 +2,7 @@
 import { DegreeService } from './../../../core/services/degree.service';
 import { DepartmentService } from './../../../core/services/department.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, HostListener, OnInit, TemplateRef } from '@angular/core';
  import { ActivatedRoute } from '@angular/router';
 import { Department } from 'src/app/core/models/Entities/Department';
 import { delay } from 'rxjs/operators';
@@ -15,7 +15,8 @@ import { Location } from '@angular/common';
 import { LoadingBarService } from '@ngx-loading-bar/core';
 import { ToastrService } from 'ngx-toastr';
 import { DoctorService } from 'src/app/core/services/doctor.service';
-import { Editor } from 'ngx-editor';
+import { Editor, Toolbar } from 'ngx-editor';
+import { AlertService } from 'src/app/core/services/alert.service';
  defineLocale('ar', arLocale);
  @Component({
   selector: 'doctor-operation',
@@ -35,7 +36,14 @@ export class DoctorOperationComponent implements OnInit {
     animated: true             // model config
   };
   DepartModelForm: any = {}  // form modal  template driven 
- 
+  toolbar: Toolbar = [
+    ['bold', 'italic'],
+    ['underline', 'strike'],
+     ['ordered_list', 'bullet_list'],
+    [{ heading: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] }],
+     ['text_color', 'background_color'],
+    ['align_left', 'align_center', 'align_right', 'align_justify'],
+  ];
   bsConfig!: Partial<BsDatepickerConfig>;  // date config
   maxDate: Date=new Date();                  //  max date
   constructor(  // constructor servoices
@@ -48,11 +56,17 @@ export class DoctorOperationComponent implements OnInit {
      private localeService: BsLocaleService,
     private spinner: NgxSpinnerService,
     private loadingBar: LoadingBarService,
-    private toastr: ToastrService  ) { 
+    private alertService:AlertService ) { 
       this.editor = new Editor();
 
      }
-
+     @HostListener('window:beforeunload', ['$event'])
+     onWindowClose(event: any): void {
+    
+       event.preventDefault();
+       event.returnValue = true;
+   
+    }
   ngOnInit(): void {    // initail
     this.createForm();
     this.dateConfig()
@@ -95,35 +109,33 @@ export class DoctorOperationComponent implements OnInit {
       containerClass: 'theme-blue',startView: 'year'}
      }
   onAdd() {      // om add Operation
-     this.checkStatus = true;
-    this.loadingBar.start();
+    this.openSpinner();
     this.doctorService.register(this.form.value).pipe(delay(500)).subscribe(
-      () => { this.toastr.success('successfully') },
-      () => { this.toastr.error('failed') },
-      () => { this.checkStatus = false;this.loadingBar.complete(); }
+      () => { this.alertService.success() },
+      () => { this.alertService.error() },
+      () => {this.closeSpinner(); }
      );
   }
   onEdit() {   
-    this.loadingBar.start();        // on edit operation
-    this.checkStatus = true;
+    this.openSpinner();        // on edit operation
+     
     this.doctorService.edit(this.id?.value, this.form.value).pipe(delay(500)).subscribe(
-      () => { this.toastr.success('successfully' )},
-      () => { this.toastr.error('failed' )},
-      () => { this.checkStatus = false; this.loadingBar.stop(); }
+      () => { this.alertService.success( )},
+      () => { this.alertService.error( );this.closeSpinner();},
+      () => {  this.closeSpinner(); }
     );
   }
   onDelete() {  // on delete operation
-    this.loadingBar.start();        // on edit operation
-
-    this.checkStatus = true;
-     this.doctorService.delete(this.id?.value).pipe(delay(500)).subscribe(
-      () => { this.toastr.success('successfully' )},
-      () => { this.toastr.error('failed') },
-      () => { this.loadingBar.stop();this.location.back() }
+           // on edit operation
+this.openSpinner();
+      this.doctorService.delete(this.id?.value).pipe(delay(500)).subscribe(
+      () => { this.alertService.success( )},
+      () => { this.alertService.error() ;this.closeSpinner();},
+      () => { this.closeSpinner();this.location.back() }
     ); 
   }
   onPrint() {           // om print operation
-this.toastr.info('open in pro version')
+this.alertService.info('in pro version')
   }
   
 // modeal function 
@@ -140,7 +152,18 @@ saveDepartment() {
      }
   );
 }
- 
+openSpinner(){
+   
+  this.loadingBar.start();        // on edit operation
+    this.checkStatus = true;
+    this.spinner.show();
+}
+closeSpinner(){
+  this.checkStatus = false;
+  this.loadingBar.complete();
+  this.spinner.hide(); 
+
+}
  /// form controll get
   get id() {         
     return this.form.get('id');

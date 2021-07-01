@@ -6,17 +6,19 @@
         "delete": "delete",
         "are you sure delete this records": "are you sure delete this records",
         "save": "save",
-        "name ar":"name ar",
-        "name":"name",
-        "add":"add"
+        "add": "add",
+        "not allow space": "not allow space",
+        "name": "name",
+        "name ar": "name ar",
+        "lastEdit": "lastEdit",
+        "in version 3": "in version 3"
     },
     "home": {
         "home": "home",
         "patients": "patients",
         "calender": "calender",
-        "logout": "logout",     
-           "new": "new"
-
+        "logout": "logout",
+        "new": "new"
     },
     "table": {
         "search": "search",
@@ -48,20 +50,88 @@
         "city": "city",
         "state": "state",
         "street": "street",
-        "email": "email"
+        "email": "email",
+        "patients": "patients",
+        "lab code found":"lab code found"
     },
     "navs": {
         "record video": "record video",
-        "doctor": "doctor",
+        "doctors": "doctor",
         "witing list": "witing list",
         "reports": "reports",
         "ercp": "ercp",
-        "cononscopy": "cononscopy",
+        "colonoscopy": "colonoscopy",
         "ugi": "ugi",
-        "flexiable": "flexiable"
+        "flexiable": "flexiable",
+        "departments": "departments",
+        "degrees": "degrees",
+        "patients": "patients"
+    },
+    "record": {
+        "record video": "record video",
+        "name": "name",
+        "age": "age",
+        "codelab": "code lab",
+        "degree": "degree",
+        "video setting": "video setting",
+        "file path": " save path ",
+        "choose device input": "choose device input",
+        "image capture": "images capture"
+    },
+    "dept": {
+        "departments": "departments",
+        "name": "name",
+        "name ar": "name ar",
+        "lastEdit": "lastEdit"
+    },
+    "degree": {
+        "degrees": "degrees",
+        "name":"name",
+        "name ar":"name ar"
+
+    },
+    "doctor": {
+        "doctors": "doctors",
+        "university name":"university name",
+        "show report":"show report",
+        "is consultant":"is consultant",
+        "report description":"report description" ,
+        "university":"university",
+        "is Show Report":"is Show Report",
+        "phone":"phone",
+        "name":"name",
+        "department":"department"
+        
     },
     "footer": {
         "copyright": "copyright © 2020-2021",
         "reserved": "all rights reserved"
-    }
+    },
+    "colonoscopy":{
+        "colonoscopy":"colonoscopy",
+        "patient name":"patient name",
+        "degree":"degree",
+        "department":"department",
+        "consultant name":"consultant name",
+"dateOfReport":"date 0f report",
+"EndoscopistName":"endoscopist name"
+ 
+    },
+
+    "filed required":"filed required",
+    "found":"found",
+    "not found":"not found",
+    "success process":"sucess complete",
+    "fail process":"fail",
+    "in next version":" pay version",
+    "name require":"name require",
+    "start record first":"start record first",
+    "error in recording":"error in recording",
+    "labcode not found":"labcode not found",
+    "video no finished":"video no stop",
+    "this page contain data unsave sure to move":"this page contain data unsave sure to move",
+    "error may failds required":"error may failds required",
+    "search":"search",
+    "pro":"pro"
+ 
 }

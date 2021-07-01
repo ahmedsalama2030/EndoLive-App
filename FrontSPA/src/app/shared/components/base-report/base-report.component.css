@@ -3,24 +3,62 @@
     width: 100%;
     display: grid;
     grid-template-areas: "head head head" "body body body" "footer footer footer";
-    box-shadow: 0 9px 23px 3px rgb(64 60 67 / 16%) ,0 -9px 23px 3px rgb(64 60 67 / 16%);
-    
-    overflow-y: scroll;
+      overflow-y: auto;
     overflow-x: hidden;
-    height: 90vh;
+    height: auto;
     border-radius: 1rem;
-}
+ }
+ 
+.base-container::-webkit-scrollbar {
+    
+    width: 0px !important;
+    height: 0px !important;
+   }
+ 
+ 
 .base-report .header{
      height: 90px;
     grid-area: head;
-    display: grid;
-    grid-template-columns:   repeat(3,1fr);
-    padding: .5rem;
+      padding: 1rem;
     font-size: 1rem;
     font-weight: bold;
     color: #000;
     border-bottom: 1px solid #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
  }
+ @media (max-width:576px) {
+    .base-report .header{
+        font-size: .5rem;
+        padding: .5rem;
+
+    } 
+ }
+
+ .base-report .info{
+display: grid;
+grid-template-columns: 1fr 3fr 1fr 1fr;
+grid-template-rows: repeat(2,1fr);
+justify-content: center;
+gap: .5rem;
+padding: 1rem
+ }
+@media (max-width:576px) {
+    .base-report .info{
+        grid-template-columns: 1fr 3fr ;
+        grid-template-rows: repeat(4,1fr);
+        gap: .3rem;
+        font-size: .8rem;
+
+    }
+}
+.base-report .info div:nth-child(odd){
+font-weight: bold;
+}
+.base-report .info div:nth-child(even){
+   color: gray;
+}
  
 .base-report .body{
     grid-area: body;
@@ -30,6 +68,17 @@
     grid-area: footer;
 
 }
+.second img{
+width: 70px;
+height: 70px;
+}
+@media (max-width:576px) {
+    .second img{
+        width: 40px;
+        height: 40px;
+        }
+}
+
  .report-name{
 text-align: center;
 text-transform: capitalize;

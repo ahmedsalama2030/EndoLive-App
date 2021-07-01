@@ -5,7 +5,7 @@ import { DeparmentComponent } from './deparment/deparment.component';
 
 const routes: Routes = [
 
-  {path:'',component:DeparmentComponent,resolve:{data:DepartmentListResolver}},
+  {path:'',component:DeparmentComponent,resolve:{data:DepartmentListResolver}, data: { animation: 'Page' }},
      {path:'**',redirectTo:''}
 ];
 

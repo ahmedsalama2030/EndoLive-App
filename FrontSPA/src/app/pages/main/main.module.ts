@@ -7,12 +7,13 @@ import { MainComponent } from './main.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
+import { HomeComponent } from '../home/home.component';
        
 
 @NgModule({
-  declarations: [MainComponent],
+  declarations: [MainComponent,HomeComponent],
   imports: [
-    CommonModule,
+    CommonModule, 
     MainRoutingModule,
     BsDropdownModule.forRoot(),
     TranslateModule,
