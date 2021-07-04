@@ -18,18 +18,16 @@
      <div class="card ">
             <div class="card-body py-0">
                 <div class="card-img-overlay" *ngIf="checkStatus"> </div> <!-- overlay card -->
+                <form [formGroup]="form" ><!-- satrt form -->
                 <div class="card-header header-operation mb-2">
                     <div>
-                        <button (click)="onAdd()" type="button" class="btn btn-success">
-                            <i class="fas fa-plus"></i>
+                        <button [disabled]="!form.valid" *ngIf="createOperation" (click)="onAdd()" type="button" class="btn btn-success">
+                            <i class="fas fa-save"></i>
                         </button>
-                        <button (click)="onDelete()" type="button" class="btn btn-danger">
-                            <i class="fas fa-trash"></i>
-
-                        </button>
-                        <button (click)="onEdit()" type="button" class="btn btn-info">
-                            <i class="fas fa-edit"></i>
-                      </button>
+                         
+                        <button [disabled]="!form.valid" *ngIf="!createOperation" (click)="onEdit()" type="button" class="btn btn-info">
+                            <i class="fas fa-save"></i>
+                      </button> 
                         <button (click)="onPrint()" type="button" class="btn btn-primary">
                             <i class="fas fa-print"></i>
 
@@ -37,7 +35,7 @@
                     </div>
                     </div>
 
-                <form [formGroup]="form"><!-- satrt form -->
+               
                     <div class="form-create">
                         <div class="important-filed">
                             <div class="form-group row">

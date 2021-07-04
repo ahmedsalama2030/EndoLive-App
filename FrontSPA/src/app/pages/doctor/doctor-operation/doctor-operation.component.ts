@@ -46,6 +46,8 @@ export class DoctorOperationComponent implements OnInit {
   ];
   bsConfig!: Partial<BsDatepickerConfig>;  // date config
   maxDate: Date=new Date();                  //  max date
+  createOperation:boolean=true;
+
   constructor(  // constructor servoices
     private doctorService: DoctorService,
     private fb: FormBuilder,
@@ -71,6 +73,7 @@ export class DoctorOperationComponent implements OnInit {
     this.createForm();
     this.dateConfig()
     this.configInitailData();
+    this.checkRouteType();
   }
   createForm() {         // create form ooperation
     this.form = this.fb.group({
@@ -94,6 +97,12 @@ export class DoctorOperationComponent implements OnInit {
     })
      
    
+  }
+  checkRouteType(){
+    let id= this.routActive.snapshot.paramMap.get('id')
+  if(id !='create'){
+    this.createOperation=false
+  }
   }
   configInitailData(){   // set up resolve come
     this.routActive.data.subscribe(data => {

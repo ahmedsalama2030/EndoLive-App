@@ -1,6 +1,6 @@
 import { ToastrService } from 'ngx-toastr';
 import { PatientImageGet } from './../../../core/models/Entities/PatientImage';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {   Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PatientImagesSelect } from 'src/app/core/models/Dtos/patientImagesSelect';
 
 @Component({
@@ -9,15 +9,20 @@ import { PatientImagesSelect } from 'src/app/core/models/Dtos/patientImagesSelec
   styleUrls: ['./photo-report.component.css']
 })
 export class PhotoReportComponent implements OnInit {
+
   @Input() patientimage!: PatientImageGet[];
 
   @Output() ImageSelect = new EventEmitter<PatientImagesSelect[]>();
 
   images: PatientImagesSelect[] = [];
-  constructor(private toastrService: ToastrService) { }
-  index: number = 1;
+  constructor(private toastrService: ToastrService) { 
+
+    console.log("constructor");
+  }
   ngOnInit(): void {
   }
+
+  index: number = 1;
 
   checkChange(event: any, Iurl: string, Iid: string) {
 

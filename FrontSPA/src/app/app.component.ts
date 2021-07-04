@@ -13,7 +13,7 @@ import { LoadingBarService } from '@ngx-loading-bar/core';
      
     
 })  
-export class AppComponent implements OnInit ,AfterViewInit{
+export class AppComponent implements OnInit{
   jwthelper = new JwtHelperService();
   decodedToken?:DecodedTokenUser;
 
@@ -26,13 +26,7 @@ constructor(
   ){
   
 }
-  ngAfterViewInit(): void {
-this.loadingBar.start();
-this.loadingBar.complete();
-
-this.loadingBar.stop();
-
- } 
+  
   ngOnInit(): void {
 
     const token = localStorage.getItem('token') ;

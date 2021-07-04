@@ -20,15 +20,12 @@ export class DoctorService {
     if(pageNumber!=null &&itemsPerPage !=null ){
       params=params.append('pageNumber',pageNumber);
       params=params.append('pageSize',itemsPerPage);
+      params=params.append('filterType',filterType ||'' );
+    params=params.append('filterValue',filterValue||'' );
+    params=params.append('sortType',sortType||'' );
        }
    
-  if(filterType!=null &&filterValue !=null){
-    params=params.append('filterType',filterType);
-    params=params.append('filterValue',filterValue);
-  }
-  if(sortType!=null ){
-    params=params.append('sortType',sortType);
-   }
+  
     return this.http.get<Doctor[]>(this.baseUrl, {observe:'response',params}).pipe(
       map(response=>{
         console.log(response);

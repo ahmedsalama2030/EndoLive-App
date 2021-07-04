@@ -141,4 +141,8 @@
     <value>هذا الاسم موجود</value>
     <comment/>
   </data>
+  <data name="labcodefound" xml:space="preserve">
+    <value>رقم الحاسب موجود</value>
+    <comment/>
+  </data>
 </root>

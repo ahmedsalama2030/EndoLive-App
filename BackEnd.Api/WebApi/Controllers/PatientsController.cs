@@ -16,6 +16,7 @@ using WebApi.Resources;
 using Microsoft.AspNetCore.Authorization;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Hosting;
+using WebApi.helper.Search;
 
 namespace WebApi.Controllers
 {
@@ -92,9 +93,9 @@ namespace WebApi.Controllers
         {
             var patient = _mapper.Map<Patient>(PatientRegister);
            var patientstatus=await _Patient.Table.FindBy(
-               a=>a.LabCode==patient.LabCode||a.NationalId==patient.NationalId);
+               a=>a.LabCode==patient.LabCode);
                if(patientstatus!=null)
-               return BadRequest(_localizer["notfound"].Value);
+               return BadRequest(_localizer["labcodefound"].Value);
 
             _Patient.Table.Add(patient);
             var result = await _Patient.SaveAllAsync();
@@ -158,15 +159,17 @@ namespace WebApi.Controllers
         [NonAction]
         public void Search(PaginationParam paginationParam, ref IQueryable<Patient> Patients)
         {
-            switch (paginationParam.filterType)
-            {
-                case "name":;Patients = _SearchName.GetName(Patients, paginationParam.filterValue); break;
-                case "phone": Patients = Patients.Where(a => a.Phone == paginationParam.filterValue); break;
-                case "Labcode": Patients = Patients.Where(a => a.LabCode == paginationParam.filterValue); break;
-                case "nationaid": Patients = Patients.Where(a => a.NationalId == paginationParam.filterValue); break;
-                case "degree": Patients = Patients.Where(a => a.DegreeId == Guid.Parse(paginationParam.filterValue)); break;
-                case "department": Patients = Patients.Where(a => a.DepartmentId == Guid.Parse(paginationParam.filterValue)); break;
-            } 
+            PatientSearch patientsearch = new PatientSearch(Patients, paginationParam, _SearchName);
+            Patients= patientsearch.Search();
+            //switch (paginationParam.filterType)
+            //{
+            //    case "name":;Patients = _SearchName.GetName(Patients, paginationParam.filterValue); break;
+            //    case "phone": Patients = Patients.Where(a => a.Phone == paginationParam.filterValue); break;
+            //    case "Labcode": Patients = Patients.Where(a => a.LabCode == paginationParam.filterValue); break;
+            //    case "nationaid": Patients = Patients.Where(a => a.NationalId == paginationParam.filterValue); break;
+            //    case "degree": Patients = Patients.Where(a => a.DegreeId == Guid.Parse(paginationParam.filterValue)); break;
+            //    case "department": Patients = Patients.Where(a => a.DepartmentId == Guid.Parse(paginationParam.filterValue)); break;
+            //} 
         }
 
     }

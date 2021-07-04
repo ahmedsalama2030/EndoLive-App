@@ -20,9 +20,9 @@ export class MediaService {
      if(pageNumber!=null&&itemsPerPage !=null){
        params=params.append('pageNumber',pageNumber);
        params=params.append('pageSize',itemsPerPage);
-       params=params.append('filterType',filterType);
-       params=params.append('filterValue',filterValue);
-         params=params.append('sortType',sortType);
+       params=params.append('filterType',filterType||'');
+       params=params.append('filterValue',filterValue||'');
+         params=params.append('sortType',sortType||'');
  
      }
      return this.http.get<Media[]>(this.baseUrl, {observe:'response',params}).pipe(

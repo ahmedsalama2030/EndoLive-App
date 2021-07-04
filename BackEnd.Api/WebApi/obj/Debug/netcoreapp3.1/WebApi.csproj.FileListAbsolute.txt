@@ -214,3 +214,5 @@ D:\projects\endoscopy\BackEnd.Api\WebApi\bin\Debug\netcoreapp3.1\runtimes\win-x8
 D:\projects\endoscopy\BackEnd.Api\WebApi\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\projects\endoscopy\BackEnd.Api\WebApi\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\projects\endoscopy\BackEnd.Api\WebApi\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\projects\endoscopy\BackEnd.Api\WebApi\obj\Debug\netcoreapp3.1\ar\WebApi.resources.cs
+D:\projects\endoscopy\BackEnd.Api\WebApi\obj\Debug\netcoreapp3.1\en\WebApi.resources.cs

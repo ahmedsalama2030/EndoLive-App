@@ -56,18 +56,22 @@
    </div>
   </section>
   
-  <!-- template modal start -->
-  <ng-template #template> 
-    <div class="modal-header bg-dark justify-content-center text-capitalize">
-      <h4 class="modal-title  "translate>general.delete</h4>
-      
-    </div>
-    <div class="modal-body text-capitalize text-center font-weight-bold ">
-      <p translate>general.are you sure delete this records</p>
-    </div>
-    <div class="modal-footer text-capitalize">
-      <button class="btn btn-danger btn-md disable" [ngClass]="{'disable': checkSave}" (click)="confirmDelete()"translate>general.save</button> 
-     </div>
-  </ng-template>
-  <!-- template modal end -->
+
+<!-- template modal start -->
+<ng-template #template> 
+  <div class="card-img-overlay" *ngIf="checkSave"> </div> <!-- overlay card -->
+
+  <div class="modal-header justify-content-center text-capitalize  bg-dark">
+
+    <h4 class="modal-title   "translate>general.delete</h4>
+   
+  </div>
+  <div class="modal-body text-capitalize font-weight-bold text-center">
+    <p translate>general.are you sure delete this records</p>
+  </div>
+  <div class="modal-footer text-capitalize">
+    <button class="btn btn-danger btn-md disable" [ngClass]="{'disable': checkSave}" (click)="confirmDelete()"translate>general.save</button> 
+   </div>
+</ng-template>
+<!-- template modal end -->
    

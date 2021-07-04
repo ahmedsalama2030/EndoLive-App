@@ -79,19 +79,19 @@
 </section>
 
 <!-- template modal start -->
-<ng-template #template>
-    <div class="modal-header text-capitalize">
-        <h4 class="modal-title pull-left" translate>general.delete</h4>
-        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef?.hide()">
-            <span aria-hidden="true">&times;</span>
-        </button>
+<ng-template #template> 
+    <div class="card-img-overlay" *ngIf="checkSave"> </div> <!-- overlay card -->
+  
+    <div class="modal-header justify-content-center text-capitalize  bg-dark">
+  
+      <h4 class="modal-title   "translate>general.delete</h4>
+     
     </div>
-    <div class="modal-body text-capitalize">
-        <p translate>general.are you sure delete this records</p>
+    <div class="modal-body text-capitalize font-weight-bold text-center">
+      <p translate>general.are you sure delete this records</p>
     </div>
     <div class="modal-footer text-capitalize">
-        <button class="btn btn-primary btn-md disable" [ngClass]="{'disable': checkSave}" (click)="confirmDelete()"
-            translate>general.save</button>
-    </div>
-</ng-template>
-<!-- template modal end -->
+      <button class="btn btn-danger btn-md disable" [ngClass]="{'disable': checkSave}" (click)="confirmDelete()"translate>general.save</button> 
+     </div>
+  </ng-template>
+  <!-- template modal end -->

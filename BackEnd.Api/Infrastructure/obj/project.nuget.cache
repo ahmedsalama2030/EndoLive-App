@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "+v5hVN8ieBbqX9tYMXwb0HLLeA/yg3TFT/4YNL9s908fDD7CWuYITmbV9yB0RNDhIAkGH+7woBDioYek5HTidw==",
+  "dgSpecHash": "TY7WuFgfxw/i/w4UQTA0xDVBsarU+2vHTo++rSF1NMVRbdmqHSf/Vo9CLjrs0iCfpmMCjOsNJmNH5rjDcTGJ3Q==",
   "success": true,
   "projectFilePath": "D:\\projects\\endoscopy\\BackEnd.Api\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [

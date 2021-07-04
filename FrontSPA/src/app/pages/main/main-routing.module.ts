@@ -12,11 +12,9 @@ const routes: Routes = [
     path: '', component: MainComponent, children: [
 
 
+      
       {
-        path: '', redirectTo: 'home'
-      },
-      {
-        path: 'home', component: HomeComponent, data: { animation: 'Page' }
+        path: '', component: HomeComponent, data: { animation: 'Page' }
 
       },
 

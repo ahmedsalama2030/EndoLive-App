@@ -20,9 +20,9 @@ export class DegreeService {
     if (pageNumber != null && itemsPerPage == null) {
       params = params.append('pageNumber', pageNumber);
       params = params.append('pageSize', itemsPerPage);
-      params = params.append('filterType', filterType);
-      params = params.append('filterValue', filterValue);
-      params = params.append('sortType', sortType);
+      params = params.append('filterType', filterType||'' );
+      params = params.append('filterValue', filterValue||'' );
+      params = params.append('sortType', sortType||'' );
      }
      console.log(itemsPerPage);
      return this.http.get<Degree[]>(this.baseUrl,{observe:'response',params}).pipe(

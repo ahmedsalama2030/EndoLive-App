@@ -3,7 +3,7 @@ import { DepartmentService } from './../../../core/services/department.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Component, HostListener, OnInit, TemplateRef, OnDestroy } from '@angular/core';
  import { PatientService } from 'src/app/core/services/patient.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
 import { Department } from 'src/app/core/models/Entities/Department';
 import { delay } from 'rxjs/operators';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
@@ -38,11 +38,12 @@ export class PatientOperationComponent implements OnInit ,OnDestroy{
 
   bsConfig!: Partial<BsDatepickerConfig>;  // date config
   maxDate: Date=new Date();                  //  max date
+  createOperation:boolean=true;
   constructor(  // constructor servoices
     private patientService: PatientService,
     private fb: FormBuilder,
     private routActive: ActivatedRoute,
-    private location:  Location,
+     private location:  Location,
     private modalService: BsModalService,
     private departmentService: DepartmentService,
     private degreeService: DegreeService,
@@ -61,6 +62,7 @@ export class PatientOperationComponent implements OnInit ,OnDestroy{
   ngOnInit(): void {    // initail
     this.createForm();
     this.dateConfig()
+    this.checkRouteType();
     this.configInitailData();
   }
   createForm() {         // create form ooperation
@@ -90,8 +92,16 @@ export class PatientOperationComponent implements OnInit ,OnDestroy{
       this.degrees = data['data'].degree;
       this.form.patchValue(data['data'].patient);
     });
-  }
 
+     
+    
+  }
+checkRouteType(){
+  let id= this.routActive.snapshot.paramMap.get('id')
+if(id !='create'){
+  this.createOperation=false
+}
+}
   dateConfig(){          // ngx-date config
     this.bsConfig={
       isAnimated: true,
@@ -99,6 +109,7 @@ export class PatientOperationComponent implements OnInit ,OnDestroy{
       containerClass: 'theme-blue',startView: 'year'}
       }
   onAdd() {      // om add Operation
+     
     this.openSpinner();
     this.patientService.register(this.form.value).pipe(delay(500)).subscribe(
       () => { this.alertService.success()},
@@ -107,9 +118,8 @@ export class PatientOperationComponent implements OnInit ,OnDestroy{
      );
   }
   onEdit() {   
-    this.loadingBar.start();        // on edit operation
-    this.checkStatus = true;
-    this.spinner.show();
+    this.openSpinner();
+
    this.patientService.edit(this.id?.value, this.form.value).pipe(delay(500)).subscribe(
       () => { this.alertService.success()  },
       () => { this.alertService.error() ;this.closeSpinner()},

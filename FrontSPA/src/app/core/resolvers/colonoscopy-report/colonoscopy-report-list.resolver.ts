@@ -24,7 +24,7 @@ export class ColonoscopyReportListResolver implements Resolve<PaginationResult<C
      resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):Observable<PaginationResult<Colonoscopy[]> | null> {
       return this.colonoscopyReportService.get().pipe(
          catchError(error => {
-              this.router.navigate(['']);
+              this.router.navigateByUrl('');
               this.toster.error();
              return of(null);
          })  

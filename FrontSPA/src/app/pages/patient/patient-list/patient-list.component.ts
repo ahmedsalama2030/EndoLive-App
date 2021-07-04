@@ -55,16 +55,15 @@ export class PatientListComponent implements OnInit, OnDestroy {
     this.filterList = [
       { name: 'name', value: 'name',searchTag:'patient' },
       { name: 'phone', value: 'phone',searchTag:'patient' },
-      { name: 'lab code', value: 'Labcode',searchTag:'patient' },
+      { name: 'lab code', value: 'labcode',searchTag:'patient' },
       { name: 'national id', value: 'nationalid',searchTag:'patient' },
       { name: 'degree', value: 'degree',searchTag:'patient' },
-
       { name: 'department', value: 'department',searchTag:'patient' },
     ];
   }
   loadPatient() {           // lget patient from api  
     this.openSpinner();
-    
+    console.log(this.pagination)
     this.patientService.getAll(this.pagination.currentPage, this.pagination.itemPerPage, this.pagination.filterType, this.pagination.filterValue).pipe(takeUntil(this.notifier)).subscribe(
       (res: PaginationResult<Patient[]>) => {
         this.patients = res.result;
@@ -126,8 +125,15 @@ export class PatientListComponent implements OnInit, OnDestroy {
   confirmDelete() {             // action delete confirm
     this.openSpinner();
     this.patientService.deleteRange(this.getSelectedList()).pipe(delay(500)).subscribe(
-      () => { this.loadPatient(); this.modalService.hide(); this.alertService.success()},
-      () => { this.alertService.error(),this.closeSpinner },
+      () => {
+         this.loadPatient();
+         this.modalService.hide();
+         this.alertService.success();
+          },
+      () => { 
+        this.alertService.error(),
+        this.closeSpinner();
+       },
       ()=>{this.closeSpinner ()     }
     );
   }
@@ -139,7 +145,7 @@ export class PatientListComponent implements OnInit, OnDestroy {
   closeSpinner(){
      this.loadingBar.complete();
      this.loadingBar.stop();
-  
+  this.checkSave=false;
   }
 
   setupAction() {             // setuo one action or more or two

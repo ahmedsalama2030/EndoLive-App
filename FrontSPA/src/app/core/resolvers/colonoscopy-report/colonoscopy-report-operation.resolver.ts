@@ -45,7 +45,8 @@ export class ColonoscopyReportOperationResolver implements Resolve<any[]> {
 
     errorMassge(mag?: string) {
         this.toster.error()
-        this.router.navigate(['/patients']);
+         this.router.navigateByUrl('/patients');
+
         return of(null);
     }
 

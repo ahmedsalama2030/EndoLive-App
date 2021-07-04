@@ -8,9 +8,7 @@ import { bounceOut, slideInAnimation } from 'src/app/animations';
   selector: 'eg-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css'],
-  animations: [
-    slideInAnimation
-  ]
+   
 
 })
 export class MainComponent implements OnInit {
