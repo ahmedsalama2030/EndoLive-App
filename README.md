@@ -8,7 +8,7 @@
  ![](https://res.cloudinary.com/dxb44v7tw/image/upload/v1625165076/endo/1_d7n2fn.jpg) 
 
 
-![N|Solid](https://res.cloudinary.com/dxb44v7tw/image/upload/v1625165075/endo/2_her6cj.jpg)
+![N|Solid](https://res.cloudinary.com/dxb44v7tw/image/upload/v1625400418/endo/endo_sfi4jq.jpg)
 
 ------------   Endo Live (Web APP v1)  old version 
 
